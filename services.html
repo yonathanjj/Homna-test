@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>service - Homna ltd</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/services.css">
+</head>
+<body>
+
+
+<nav class="navbar">
+    <a href="#" class="logo">
+        <img src="assets/image/logoen.png" alt="homna Logo">
+    </a>
+    <div class="hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="nav-overlay">
+        <div class="menu-container">
+            <div class="menu-content">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a><div class="underline"></div></li>
+                    <li><a href="about.html">About</a><div class="underline"></div></li>
+                    <li><a href="services.html">Service</a><div class="underline"></div></li>
+                    <li><a href="projects.html">Projects</a><div class="underline"></div></li>
+                    <li><a href="contact.html">Contact</a><div class="underline"></div></li>
+                </ul>
+
+                <button class="explore-products">
+                    Explore Products
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<section class="services-section">
+    <div class="services-header">
+        <h1>Construction Solutions & Products</h1>
+        <p>We partner with top companies to provide high-quality construction materials and solutions.</p>
+    </div>
+
+    <!-- Search Filters -->
+    <div class="search-container">
+        <select id="category-filter">
+            <option value="all">Select Category</option>
+            <option value="waterproofing">Waterproofing</option>
+            <option value="ceiling-bonding">Ceiling Bonding</option>
+            <option value="flooring">Flooring</option>
+            <option value="concrete-admixture">Concrete Admixture</option>
+            <option value="drainage">Drainage</option>
+            <option value="cement">Cement</option>
+            <option value="paint">Paint</option>
+            <option value="machines">Machines</option>
+        </select>
+
+        <input type="text" id="company-search" placeholder="Search by company name...">
+    </div>
+
+    <!-- Partner Companies -->
+    <div class="companies-grid">
+        <!-- Company 1 - Sika -->
+        <div class="company-card" data-name="Sika">
+            <img src="assets/image/1.jpg" alt="Sika Logo">
+            <h3>Sika</h3>
+            <p>Leading provider of waterproofing, flooring, and concrete solutions.</p>
+            <button class="view-btn">View Products</button>
+        </div>
+
+        <!-- Company 2 - Simba -->
+        <div class="company-card" data-name="Simba">
+            <img src="assets/image/simba-logo.png" alt="Simba Logo">
+            <h3>Simba</h3>
+            <p>Specializes in high-quality cement production.</p>
+            <button class="view-btn">View Products</button>
+        </div>
+
+        <!-- Company 3 - ACO -->
+        <div class="company-card" data-name="ACO">
+            <img src="assets/image/aco-logo.png" alt="ACO Logo">
+            <h3>ACO</h3>
+            <p>Provides drainage solutions for various infrastructures.</p>
+            <button class="view-btn">View Products</button>
+        </div>
+
+        <!-- Company 4 - GRACO -->
+        <div class="company-card" data-name="GRACO">
+            <img src="assets/image/graco-logo.png" alt="GRACO Logo">
+            <h3>GRACO</h3>
+            <p>Industry leader in machine solutions for construction.</p>
+            <button class="view-btn">View Products</button>
+        </div>
+
+        <!-- Company 5 - PLASCON -->
+        <div class="company-card" data-name="PLASCON">
+            <img src="assets/image/plascon-logo.png" alt="PLASCON Logo">
+            <h3>PLASCON</h3>
+            <p>Expert in high-quality paints and coatings.</p>
+            <button class="view-btn">View Products</button>
+        </div>
+    </div>
+</section>
+
+<!-- Modal Popup -->
+<div class="modal" id="product-modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="modal-title"></h2>
+        <p id="modal-description"></p>
+        <div class="categories-grid" id="category-content"></div>
+    </div>
+</div>
+
+
+
+
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-text">
+            <p class="animated-text">Connecting worlds through innovation. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel magna sit amet nulla efficitur vestibulum.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-links-col">
+                <a href="#" class="hover-grow">About</a>
+                <a href="#" class="hover-grow">Services</a>
+                <a href="#" class="hover-grow">Products</a>
+                <a href="#" class="hover-grow">Projects</a>
+            </div>
+            <div class="footer-links-col">
+                <a href="#" class="hover-grow">Partners</a>
+                <a href="#" class="hover-grow">Insights</a>
+                <a href="#" class="hover-grow">News</a>
+                <a href="#" class="hover-grow">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Maps Section -->
+    <div class="footer-maps">
+        <div class="map-container map-card">
+            <h3 class="map-title pulse">🌍 New York</h3>
+            <iframe src="https://maps.google.com/maps?q=new%20york&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    class="footer-map"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="map-container map-card">
+            <h3 class="map-title pulse">🗼 London</h3>
+            <iframe src="https://maps.google.com/maps?q=london&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    class="footer-map"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="map-container map-card">
+            <h3 class="map-title pulse">🗻 Tokyo</h3>
+            <iframe src="https://maps.google.com/maps?q=tokyo&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    class="footer-map"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+    <div class="footer-line glow-line"></div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-links">
+            <a href="#" class="link-underline">Commitment</a>
+            <a href="#" class="link-underline">Privacy Policy</a>
+            <a href="#" class="link-underline">Legal Information</a>
+            <a href="#" class="link-underline">Suppliers</a>
+            <a href="#" class="link-underline">Cookie Policy</a>
+        </div>
+    </div>
+    <div class="footer-line glow-line"></div>
+    <div class="footer-social">
+        <p class="logo-glow">@HOMNA 2025</p>
+        <div class="social-icons">
+            <a href="#" class="social-icon hover-float">
+                <img src="assets/image/1.jpg" alt="Facebook">
+            </a>
+            <a href="#" class="social-icon hover-float">
+                <img src="linkedin-icon.png" alt="LinkedIn">
+            </a>
+            <a href="#" class="social-icon hover-float">
+                <img src="linkedin-icon.png" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+    <div class="footer-logo">
+        <p class="logo-glow">HOMNA</p>
+    </div>
+</footer>
+<script src="assets/js/services.js"></script>
+</body>
+</html>

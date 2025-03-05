@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Homna ltd</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <link rel="stylesheet" href="assets/css/blog.css">
+</head>
+<body>
+
+
+<nav class="navbar">
+  <a href="#" class="logo">
+    <img src="assets/image/logoen.png" alt="homna Logo">
+  </a>
+  <div class="hamburger-menu">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <div class="nav-overlay">
+    <div class="menu-container">
+      <div class="menu-content">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a><div class="underline"></div></li>
+          <li><a href="about.html">About</a><div class="underline"></div></li>
+          <li><a href="services.html">Service</a><div class="underline"></div></li>
+          <li><a href="projects.html">Projects</a><div class="underline"></div></li>
+          <li><a href="contact.html">Contact</a><div class="underline"></div></li>
+        </ul>
+
+        <button class="explore-products">
+          Explore Products
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<!-- Popup Modal -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <h2 id="popup-title"></h2>
+    <img id="popup-image" src="" alt="">
+    <p id="popup-text"></p>
+  </div>
+</div>
+
+<!-- Blog Posts Section -->
+<div class="container">
+  <h1 class="section-title">News and blogs</h1>
+
+  <div class="blog-grid">
+    <!-- Left Column (Text Content) -->
+    <div class="left-column">
+      <div class="blog-card center-blog-text" onclick="openPopup('Arup signs MoU with industry leaders', 'https://picsum.photos/530/520', 'Leading engineering firm Arup has announced a new partnership with major industry players to integrate ecological considerations into offshore wind farm development...')">
+        <h2 class="blog-title">Arup signs MoU with industry leaders to promote nature inclusivity</h2>
+        <p class="blog-excerpt">Leading engineering firm Arup has announced a new partnership with major industry players to integrate ecological considerations into offshore wind farm development...</p>
+        <div class="date">13th December 2024</div>
+      </div>
+    </div>
+
+    <!-- Center Column (Main Blog) -->
+    <div class="center-column">
+      <div class="blog-card center-blog" onclick="openPopup('Main Blog Post', 'https://picsum.photos/530/520', 'Main blog post content goes here...')">
+        <div class="blog-image" style="background-image: url('https://picsum.photos/530/520')"></div>
+      </div>
+    </div>
+
+    <!-- Right Column (Side Blog) -->
+    <div class="right-column">
+      <div class="blog-card right-blog" onclick="openPopup('Yantai City\'s Sun Tower opens in China', 'https://picsum.photos/330/240', 'Yantai City has inaugurated its iconic Sun Tower, blending modern architecture with cultural heritage.')">
+        <div class="blog-image" style="background-image: url('https://picsum.photos/330/240')"></div>
+        <h3 class="blog-title">Yantai City's Sun Tower opens in China</h3>
+        <div class="date">12th December 2024</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Latest Posts Section -->
+<section class="container">
+  <h2 class="section-title">Latest Posts</h2>
+  <div class="posts-grid">
+    <!-- Post 1 -->
+    <div class="post-card" onclick="openPopup('Blog Post Title 1', 'assets/image/2.jpg', 'This is the content of Blog Post 1.')">
+      <div class="post-image" style="background-image: url('assets/image/2.jpg')"></div>
+      <h3 class="post-title">Blog Post Title 1</h3>
+      <span class="post-date">March 15, 2024</span>
+    </div>
+
+    <!-- Post 2 -->
+    <div class="post-card" onclick="openPopup('Blog Post Title 2', 'assets/image/1.jpg', 'This is the content of Blog Post 2.')">
+      <div class="post-image" style="background-image: url('assets/image/1.jpg')"></div>
+      <h3 class="post-title">Blog Post Title 2</h3>
+      <span class="post-date">March 16, 2024</span>
+    </div>
+
+    <!-- Post 3 -->
+    <div class="post-card" onclick="openPopup('Blog Post Title 3', 'assets/image/3.jpg', 'This is the content of Blog Post 3.This is the content of Blog Post 1This is the content of Blog Post 1This is the content of Blog Post 1This is the content of Blog Post 1This is the content of Blog Post 1This is the content of Blog Post 1This is the content of Blog Post 1This is the content of Blog Post 1This is the content of Blog Post 1This is the content of Blog Post 1This is the content of Blog Post 1This is the content of Blog Post 1This is the content of Blog Post 1')">
+      <div class="post-image" style="background-image: url('assets/image/3.jpg')"></div>
+      <h3 class="post-title">Blog Post Title 3</h3>
+      <span class="post-date">March 17, 2024</span>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-text">
+      <p class="animated-text">Connecting worlds through innovation. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel magna sit amet nulla efficitur vestibulum.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-links-col">
+        <a href="#" class="hover-grow">About</a>
+        <a href="#" class="hover-grow">Services</a>
+        <a href="#" class="hover-grow">Products</a>
+        <a href="#" class="hover-grow">Projects</a>
+      </div>
+      <div class="footer-links-col">
+        <a href="#" class="hover-grow">Partners</a>
+        <a href="#" class="hover-grow">Insights</a>
+        <a href="#" class="hover-grow">News</a>
+        <a href="#" class="hover-grow">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Maps Section -->
+  <div class="footer-maps">
+    <div class="map-container map-card">
+      <h3 class="map-title pulse">🌍 New York</h3>
+      <iframe src="https://maps.google.com/maps?q=new%20york&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              class="footer-map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="map-container map-card">
+      <h3 class="map-title pulse">🗼 London</h3>
+      <iframe src="https://maps.google.com/maps?q=london&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              class="footer-map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="map-container map-card">
+      <h3 class="map-title pulse">🗻 Tokyo</h3>
+      <iframe src="https://maps.google.com/maps?q=tokyo&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              class="footer-map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <div class="footer-line glow-line"></div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-links">
+      <a href="#" class="link-underline">Commitment</a>
+      <a href="#" class="link-underline">Privacy Policy</a>
+      <a href="#" class="link-underline">Legal Information</a>
+      <a href="#" class="link-underline">Suppliers</a>
+      <a href="#" class="link-underline">Cookie Policy</a>
+    </div>
+  </div>
+  <div class="footer-line glow-line"></div>
+  <div class="footer-social">
+    <p class="logo-glow">@HOMNA 2025</p>
+    <div class="social-icons">
+      <a href="#" class="social-icon hover-float">
+        <img src="assets/image/1.jpg" alt="Facebook">
+      </a>
+      <a href="#" class="social-icon hover-float">
+        <img src="linkedin-icon.png" alt="LinkedIn">
+      </a>
+      <a href="#" class="social-icon hover-float">
+        <img src="linkedin-icon.png" alt="LinkedIn">
+      </a>
+    </div>
+  </div>
+  <div class="footer-logo">
+    <p class="logo-glow">HOMNA</p>
+  </div>
+</footer>
+<script src="assets/js/blog.js"></script>
+</body>
+</html>

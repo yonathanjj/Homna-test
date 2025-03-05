@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Homna ltd</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+
+
+<nav class="navbar">
+    <a href="#" class="logo">
+        <img src="assets/image/logoen.png" alt="homna Logo">
+    </a>
+    <div class="hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="nav-overlay">
+        <div class="menu-container">
+            <div class="menu-content">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a><div class="underline"></div></li>
+                    <li><a href="about.html">About</a><div class="underline"></div></li>
+                    <li><a href="services.html">Service</a><div class="underline"></div></li>
+                    <li><a href="projects.html">Projects</a><div class="underline"></div></li>
+                    <li><a href="contact.html">Contact</a><div class="underline"></div></li>
+                </ul>
+
+                <button class="explore-products">
+                    Explore Products
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<section class="hero">
+    <img class="hero-image" src="assets/image/2.jpg" alt="Construction Image">
+    <div class="hero-text">
+        <h1>Building Your<br> Dreams,One <br>Brick at a Time</h1>
+    </div>
+</section>
+
+
+
+<section class="what-we-do">
+    <div class="container">
+        <div class="left-side">
+            <h2 class="header" style="color: black;">What We Do</h2>
+            <a href="services.html" class="more-btn">See our service</a> <!-- Changed button to link -->
+        </div>
+        <div class="right-side">
+            <p class="paragraph">We offer a wide range of creative services designed to help your business thrive. From branding and design to digital marketing and event management, our team is here to bring your ideas to life. With a keen eye for detail and a passion for innovation, we ensure that every project is executed with excellence and a focus on your unique goals.</p>
+        </div>
+    </div>
+</section>
+
+
+<section class="image-slider">
+    <div class="image-container">
+        <img src="image1.jpg" alt="Image 1" class="slider-image">
+        <img src="image2.jpg" alt="Image 2" class="slider-image">
+        <img src="image3.jpg" alt="Image 3" class="slider-image">
+        <img src="image4.jpg" alt="Image 4" class="slider-image">
+        <img src="image5.jpg" alt="Image 5" class="slider-image">
+        <img src="image6.jpg" alt="Image 6" class="slider-image">
+        <img src="image7.jpg" alt="Image 7" class="slider-image">
+        <img src="image8.jpg" alt="Image 8" class="slider-image">
+        <img src="image9.jpg" alt="Image 9" class="slider-image">
+        <img src="image10.jpg" alt="Image 10" class="slider-image">
+        <!-- Duplicate images for seamless loop -->
+        <img src="image1.jpg" alt="Image 1" class="slider-image">
+        <img src="image2.jpg" alt="Image 2" class="slider-image">
+        <img src="image3.jpg" alt="Image 3" class="slider-image">
+        <img src="image4.jpg" alt="Image 4" class="slider-image">
+        <img src="image5.jpg" alt="Image 5" class="slider-image">
+        <img src="image6.jpg" alt="Image 6" class="slider-image">
+        <img src="image7.jpg" alt="Image 7" class="slider-image">
+        <img src="image8.jpg" alt="Image 8" class="slider-image">
+        <img src="image9.jpg" alt="Image 9" class="slider-image">
+        <img src="image10.jpg" alt="Image 10" class="slider-image">
+    </div>
+</section>
+
+
+<section id="latest-projects" class="latest-projects">
+    <h2 class="header">Our Latest Projects</h2>
+
+    <div class="projects-container">
+        <!-- Project 1 -->
+        <div class="project-card" data-title="Project 1" data-image="assets/image/4.jpg">
+            <div class="image" style="background-image: url('assets/image/4.jpg');"></div>
+            <p class="project-title">Project 1</p>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card" data-title="Project 2" data-image="assets/image/3.jpg">
+            <div class="image" style="background-image: url('assets/image/3.jpg');"></div>
+            <p class="project-title">Project 2</p>
+        </div>
+    </div>
+
+    <div class="projects-container">
+        <!-- Project 3 -->
+        <div class="project-card" data-title="Project 3" data-image="assets/image/1.jpg">
+            <div class="image" style="background-image: url('assets/image/1.jpg');"></div>
+            <p class="project-title">Project 3</p>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card" data-title="Project 4" data-image="assets/image/2.jpg">
+            <div class="image" style="background-image: url('assets/image/2.jpg');"></div>
+            <p class="project-title">Project 4</p>
+        </div>
+    </div>
+
+    <button class="all-projects-btn">All Projects</button>
+
+    <!-- Projects Popup -->
+    <div id="projects-popup" class="projects-popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closeProjectsPopup()">&times;</span>
+
+            <h2 class="popup-title">Project Details</h2>
+            <p class="popup-description">
+                Explore this project in detail. Click the images below for a closer look.
+            </p>
+
+            <div class="popup-gallery">
+                <!-- Images will be inserted dynamically -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="our-partners">
+    <h2 class="partners-header">Our Partners</h2>
+    <div class="partners-container">
+        <div class="partner">
+            <img src="assets/image/1.jpg" alt="Partner 1" class="partner-logo">
+            <p class="partner-name">Company 1</p>
+        </div>
+        <div class="partner">
+            <img src="logo2.jpg" alt="Partner 2" class="partner-logo">
+            <p class="partner-name">Company 2</p>
+        </div>
+        <div class="partner">
+            <img src="logo3.jpg" alt="Partner 3" class="partner-logo">
+            <p class="partner-name">Company 3</p>
+        </div>
+        <div class="partner">
+            <img src="logo4.jpg" alt="Partner 4" class="partner-logo">
+            <p class="partner-name">Company 4</p>
+        </div>
+        <div class="partner">
+            <img src="logo5.jpg" alt="Partner 5" class="partner-logo">
+            <p class="partner-name">Company 5</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="latest-news">
+    <div class="news-container">
+        <div class="news-content">
+            <div class="news-headings">
+                <h2>Latest news</h2>
+                <div class="heading-row">
+                    <p class="subheading">We explore some of the biggest questions facing the built and natural environments.</p>
+                    <a href="#" class="more-news">More news</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="cards-section">
+    <div class="card" onclick="openPopup('Exciting News About Our Latest Project', 'assets/image/1.jpg', 'This is the blog content for card 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum')">
+        <div class="news-text">News</div>
+        <div class="card-title">Exciting News About Our Latest Project</div>
+        <div class="circle-image">
+            <img src="assets/image/1.jpg" alt="Image 1">
+        </div>
+    </div>
+
+    <div class="card" onclick="openPopup('A New Collaboration Announcement', 'image2.jpg', 'This is the blog content for card 2. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.')">
+        <div class="news-text">News</div>
+        <div class="card-title">A New Collaboration Announcement</div>
+        <div class="circle-image">
+            <img src="image2.jpg" alt="Image 2">
+        </div>
+    </div>
+
+    <div class="card" onclick="openPopup('Behind The Scenes of Our Latest Work', 'image3.jpg', 'This is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')">
+        <div class="news-text">News</div>
+        <div class="card-title">Behind The Scenes of Our Latest Work</div>
+        <div class="circle-image">
+            <img src="image3.jpg" alt="Image 3">
+        </div>
+    </div>
+</section>
+
+<!-- Popup Modal -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2 id="popup-title"></h2>
+        <img id="popup-image" src="" alt="">
+        <p id="popup-text"></p>
+    </div>
+</div>
+
+
+
+<section class="clientele-section">
+    <h2 class="section-title">Clientele</h2>
+    <div class="logos-container">
+        <div class="logo-item">
+            <img src="logo1.png" alt="Logo 1" class="logo-image">
+        </div>
+        <div class="logo-item">
+            <img src="logo2.png" alt="Logo 2" class="logo-image">
+        </div>
+        <div class="logo-item">
+            <img src="logo3.png" alt="Logo 3" class="logo-image">
+        </div>
+        <div class="logo-item">
+            <img src="logo4.png" alt="Logo 4" class="logo-image">
+        </div>
+        <div class="logo-item">
+            <img src="logo5.png" alt="Logo 5" class="logo-image">
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-text">
+            <p class="animated-text">Connecting worlds through innovation. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel magna sit amet nulla efficitur vestibulum.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-links-col">
+                <a href="#" class="hover-grow">About</a>
+                <a href="#" class="hover-grow">Services</a>
+                <a href="#" class="hover-grow">Products</a>
+                <a href="#" class="hover-grow">Projects</a>
+            </div>
+            <div class="footer-links-col">
+                <a href="#" class="hover-grow">Partners</a>
+                <a href="#" class="hover-grow">Insights</a>
+                <a href="#" class="hover-grow">News</a>
+                <a href="#" class="hover-grow">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Maps Section -->
+    <div class="footer-maps">
+        <div class="map-container map-card">
+            <h3 class="map-title pulse">🌍 New York</h3>
+            <iframe src="https://maps.google.com/maps?q=new%20york&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    class="footer-map"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="map-container map-card">
+            <h3 class="map-title pulse">🗼 London</h3>
+            <iframe src="https://maps.google.com/maps?q=london&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    class="footer-map"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="map-container map-card">
+            <h3 class="map-title pulse">🗻 Tokyo</h3>
+            <iframe src="https://maps.google.com/maps?q=tokyo&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    class="footer-map"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+    <div class="footer-line glow-line"></div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-links">
+            <a href="#" class="link-underline">Commitment</a>
+            <a href="#" class="link-underline">Privacy Policy</a>
+            <a href="#" class="link-underline">Legal Information</a>
+            <a href="#" class="link-underline">Suppliers</a>
+            <a href="#" class="link-underline">Cookie Policy</a>
+        </div>
+    </div>
+    <div class="footer-line glow-line"></div>
+    <div class="footer-social">
+        <p class="logo-glow">@HOMNA 2025</p>
+        <div class="social-icons">
+            <a href="#" class="social-icon hover-float">
+                <img src="assets/image/1.jpg" alt="Facebook">
+            </a>
+            <a href="#" class="social-icon hover-float">
+                <img src="linkedin-icon.png" alt="LinkedIn">
+            </a>
+            <a href="#" class="social-icon hover-float">
+                <img src="linkedin-icon.png" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+    <div class="footer-logo">
+        <p class="logo-glow">HOMNA</p>
+    </div>
+</footer>
+
+
+<script src="assets/js/home.js"></script>
+</body>
+</html>
