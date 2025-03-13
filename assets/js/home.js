@@ -118,17 +118,6 @@ window.onload = function() {
 }
 
 
-
-document.addEventListener("DOMContentLoaded", function () {
-  const imageContainer = document.querySelector('.image-container');
-  const originalWidth = imageContainer.scrollWidth / 2;
-  const speed = 100; // Adjust this value to control speed (higher = slower)
-
-  // Set animation duration based on content width and desired speed
-  imageContainer.style.animationDuration = `${originalWidth / speed}s`;
-});
-
-
 // Remove all Intersection Observer code
 
 const allProjectsButton = document.querySelector('.all-projects-btn');

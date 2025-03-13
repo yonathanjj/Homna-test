@@ -125,7 +125,7 @@
     <div class="container">
         <div class="left-side">
             <h2 class="header" style="color: black;">What We Do</h2>
-            <a href="services.html" class="more-btn">See our service</a> <!-- Changed button to link -->
+            <a href="services.html" class="more-btn">See our solutions</a> <!-- Updated text and removed underline -->
         </div>
         <div class="right-side">
             <p class="paragraph">We offer a wide range of creative services designed to help your business thrive. From branding and design to digital marketing and event management, our team is here to bring your ideas to life. With a keen eye for detail and a passion for innovation, we ensure that every project is executed with excellence and a focus on your unique goals.</p>
@@ -133,32 +133,6 @@
     </div>
 </section>
 
-
-<section class="image-slider">
-    <div class="image-container">
-        <img src="image1.jpg" alt="Image 1" class="slider-image">
-        <img src="image2.jpg" alt="Image 2" class="slider-image">
-        <img src="image3.jpg" alt="Image 3" class="slider-image">
-        <img src="image4.jpg" alt="Image 4" class="slider-image">
-        <img src="image5.jpg" alt="Image 5" class="slider-image">
-        <img src="image6.jpg" alt="Image 6" class="slider-image">
-        <img src="image7.jpg" alt="Image 7" class="slider-image">
-        <img src="image8.jpg" alt="Image 8" class="slider-image">
-        <img src="image9.jpg" alt="Image 9" class="slider-image">
-        <img src="image10.jpg" alt="Image 10" class="slider-image">
-        <!-- Duplicate images for seamless loop -->
-        <img src="image1.jpg" alt="Image 1" class="slider-image">
-        <img src="image2.jpg" alt="Image 2" class="slider-image">
-        <img src="image3.jpg" alt="Image 3" class="slider-image">
-        <img src="image4.jpg" alt="Image 4" class="slider-image">
-        <img src="image5.jpg" alt="Image 5" class="slider-image">
-        <img src="image6.jpg" alt="Image 6" class="slider-image">
-        <img src="image7.jpg" alt="Image 7" class="slider-image">
-        <img src="image8.jpg" alt="Image 8" class="slider-image">
-        <img src="image9.jpg" alt="Image 9" class="slider-image">
-        <img src="image10.jpg" alt="Image 10" class="slider-image">
-    </div>
-</section>
 
 
 <section id="latest-projects" class="latest-projects">
@@ -176,9 +150,7 @@
             <div class="image" style="background-image: url('assets/image/3.jpg');"></div>
             <p class="project-title">Project 2</p>
         </div>
-    </div>
 
-    <div class="projects-container">
         <!-- Project 3 -->
         <div class="project-card" data-title="Project 3" data-image="assets/image/1.jpg">
             <div class="image" style="background-image: url('assets/image/1.jpg');"></div>
@@ -190,20 +162,30 @@
             <div class="image" style="background-image: url('assets/image/2.jpg');"></div>
             <p class="project-title">Project 4</p>
         </div>
+
+        <!-- Project 5 -->
+        <div class="project-card" data-title="Project 5" data-image="assets/image/1.jpg">
+            <div class="image" style="background-image: url('assets/image/1.jpg');"></div>
+            <p class="project-title">Project 5</p>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card" data-title="Project 6" data-image="assets/image/2.jpg">
+            <div class="image" style="background-image: url('assets/image/2.jpg');"></div>
+            <p class="project-title">Project 6</p>
+        </div>
     </div>
 
-    <button class="all-projects-btn">All Projects</button>
+    <button class="all-projects-btn">Discover More</button>
 
     <!-- Projects Popup -->
     <div id="projects-popup" class="projects-popup">
         <div class="popup-content">
             <span class="close-btn" onclick="closeProjectsPopup()">&times;</span>
-
             <h2 class="popup-title">Project Details</h2>
             <p class="popup-description">
                 Explore this project in detail. Click the images below for a closer look.
             </p>
-
             <div class="popup-gallery">
                 <!-- Images will be inserted dynamically -->
             </div>
@@ -213,7 +195,7 @@
 
 
 <section class="our-partners">
-    <h2 class="partners-header">Our Partners</h2>
+    <h2 class="partners-header">Partners</h2>
     <div class="partners-container">
         <div class="partner">
             <img src="assets/image/1.jpg" alt="Partner 1" class="partner-logo">
@@ -245,41 +227,42 @@
     <div class="news-container">
         <div class="news-content">
             <div class="news-headings">
-                <h2>Latest news</h2>
-                <div class="heading-row">
-                    <p class="subheading">We explore some of the biggest questions facing the built and natural environments.</p>
-                    <a href="#" class="more-news">More news</a>
-                </div>
+                <h2 class="centered-header">Latest News</h2> <!-- Added class for centering -->
+                <p class="subheading">We explore some of the biggest questions facing the built and natural environments.</p>
             </div>
         </div>
     </div>
-</section>
 
+    <!-- Cards Section -->
+    <div class="cards-section">
+        <div class="card" onclick="openPopup('Exciting News About Our Latest Project', 'assets/image/1.jpg', 'This is the blog content for card 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum')">
+            <div class="news-text">News</div>
+            <div class="card-title">Exciting News About Our Latest Project</div>
+            <div class="circle-image">
+                <img src="assets/image/1.jpg" alt="Image 1">
+            </div>
+        </div>
 
+        <div class="card" onclick="openPopup('A New Collaboration Announcement', 'image2.jpg', 'This is the blog content for card 2. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.')">
+            <div class="news-text">News</div>
+            <div class="card-title">A New Collaboration Announcement</div>
+            <div class="circle-image">
+                <img src="image2.jpg" alt="Image 2">
+            </div>
+        </div>
 
-<section class="cards-section">
-    <div class="card" onclick="openPopup('Exciting News About Our Latest Project', 'assets/image/1.jpg', 'This is the blog content for card 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum')">
-        <div class="news-text">News</div>
-        <div class="card-title">Exciting News About Our Latest Project</div>
-        <div class="circle-image">
-            <img src="assets/image/1.jpg" alt="Image 1">
+        <div class="card" onclick="openPopup('Behind The Scenes of Our Latest Work', 'image3.jpg', 'This is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')">
+            <div class="news-text">News</div>
+            <div class="card-title">Behind The Scenes of Our Latest Work</div>
+            <div class="circle-image">
+                <img src="image3.jpg" alt="Image 3">
+            </div>
         </div>
     </div>
 
-    <div class="card" onclick="openPopup('A New Collaboration Announcement', 'image2.jpg', 'This is the blog content for card 2. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.')">
-        <div class="news-text">News</div>
-        <div class="card-title">A New Collaboration Announcement</div>
-        <div class="circle-image">
-            <img src="image2.jpg" alt="Image 2">
-        </div>
-    </div>
-
-    <div class="card" onclick="openPopup('Behind The Scenes of Our Latest Work', 'image3.jpg', 'This is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumThis is the blog content for card 3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')">
-        <div class="news-text">News</div>
-        <div class="card-title">Behind The Scenes of Our Latest Work</div>
-        <div class="circle-image">
-            <img src="image3.jpg" alt="Image 3">
-        </div>
+    <!-- Centered "More News" Button -->
+    <div class="button-container">
+        <a href="#" class="more-news">Discover News</a>
     </div>
 </section>
 
@@ -293,28 +276,6 @@
     </div>
 </div>
 
-
-
-<section class="clientele-section">
-    <h2 class="section-title">Clientele</h2>
-    <div class="logos-container">
-        <div class="logo-item">
-            <img src="logo1.png" alt="Logo 1" class="logo-image">
-        </div>
-        <div class="logo-item">
-            <img src="logo2.png" alt="Logo 2" class="logo-image">
-        </div>
-        <div class="logo-item">
-            <img src="logo3.png" alt="Logo 3" class="logo-image">
-        </div>
-        <div class="logo-item">
-            <img src="logo4.png" alt="Logo 4" class="logo-image">
-        </div>
-        <div class="logo-item">
-            <img src="logo5.png" alt="Logo 5" class="logo-image">
-        </div>
-    </div>
-</section>
 
 <footer class="footer">
     <div class="footer-content">
@@ -335,32 +296,10 @@
         </div>
     </div>
 
-    <!-- Interactive Maps Section -->
-    <div class="footer-maps">
-        <div class="map-container map-card">
-            <h3 class="map-title pulse">🌍 New York</h3>
-            <iframe src="https://maps.google.com/maps?q=new%20york&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                    class="footer-map"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <div class="map-container map-card">
-            <h3 class="map-title pulse">🗼 London</h3>
-            <iframe src="https://maps.google.com/maps?q=london&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                    class="footer-map"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <div class="map-container map-card">
-            <h3 class="map-title pulse">🗻 Tokyo</h3>
-            <iframe src="https://maps.google.com/maps?q=tokyo&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                    class="footer-map"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </div>
-
+    <!-- Footer Line -->
     <div class="footer-line glow-line"></div>
+
+    <!-- Bottom Links -->
     <div class="footer-bottom">
         <div class="footer-bottom-links">
             <a href="commitment.html" class="link-underline">Commitment</a>
@@ -370,7 +309,20 @@
             <a href="cookie.html" class="link-underline">Cookie Policy</a>
         </div>
     </div>
+
+    <!-- Footer Line -->
     <div class="footer-line glow-line"></div>
+
+    <!-- Location Section -->
+    <div class="footer-locations">
+        <div class="location-container">
+            <a href="https://maps.google.com/maps?q=mainoffice+remera+1+kk+st.+4+mnamn" target="_blank" class="location-link">📍 Main Office, Remera 1 KK St. 4 Mnamn</a>
+            <a href="https://maps.google.com/maps?q=new+york" target="_blank" class="location-link">📍 New York</a>
+            <a href="https://maps.google.com/maps?q=london" target="_blank" class="location-link">📍 London</a>
+        </div>
+    </div>
+
+    <!-- Social Section -->
     <div class="footer-social">
         <p class="logo-glow">@HOMNA 2025</p>
         <div class="social-icons">
@@ -385,9 +337,13 @@
             </a>
         </div>
     </div>
+
+    <!-- Footer Logo -->
     <div class="footer-logo">
         <p class="logo-glow">HOMNA</p>
     </div>
+
+
 </footer>
 
 

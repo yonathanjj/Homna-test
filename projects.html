@@ -110,67 +110,56 @@
 </div>
 
 
-<section class="latest-projects">
-    <div class="projects-header">
-        <h2 class="header">Our <br> construction <br> projects</h2>
-        <p>Here you will find a selection of projects we are particularly proud of.</p>
+<main class="projects-section">
+    <h2>Our Projects</h2>
+    <p class="projects-intro">
+        Explore some of our most innovative and impactful projects. From cutting-edge construction solutions to sustainable designs, our work speaks for itself. Each project reflects our commitment to quality, creativity, and excellence.
+    </p>
+    <div class="projects-grid" id="projects-grid">
+        <!-- Projects will be dynamically added here using JavaScript -->
     </div>
+</main>
 
-    <div class="filter-buttons">
-        <button class="active" data-filter="all">All</button>
-        <button data-filter="residential">Residential</button>
-        <button data-filter="commercial">Commercial</button>
-        <button data-filter="industrial">Industrial</button>
-        <button data-filter="infrastructure">Infrastructure</button>
-        <button data-filter="renovation">Renovation</button>
-    </div>
+<!-- Popup Modal -->
+<div id="project-popup" class="popup-modal">
+    <div class="popup-content">
+        <!-- Sticky Close Button -->
+        <span class="close-popup">&times;</span>
 
-    <div class="projects-grid">
-        <!-- Project 1 -->
-        <div class="project-card" data-category="residential"
-             data-images='["https://source.unsplash.com/random/800x600?construction1","https://source.unsplash.com/random/800x600?construction2","https://source.unsplash.com/random/800x600?construction3","https://source.unsplash.com/random/800x600?construction7","https://source.unsplash.com/random/800x600?construction8","https://source.unsplash.com/random/800x600?construction9"]'
-             data-description="Modern residential complex with sustainable design and smart home features.">
-            <div class="image" style="background-image: url('assets/image/2.jpg')"></div>
-            <p class="project-title">Urban Living Complex</p>
+        <!-- Full-Width Image with Overlay Text -->
+        <div class="popup-image-container">
+            <img class="popup-image" src="" alt="Project Image">
+            <div class="popup-image-overlay">
+                <h2 class="project-title"></h2>
+            </div>
         </div>
 
-        <!-- Project 2 -->
-        <div class="project-card" data-category="commercial"
-             data-images='["assets/image/1.jpg","assets/image/1.jpg","assets/image/1.jpg","https://source.unsplash.com/random/800x600?construction10","https://source.unsplash.com/random/800x600?construction11","https://source.unsplash.com/random/800x600?construction12"]'
-             data-description="State-of-the-art commercial center with innovative architectural solutions.">
-            <div class="image" style="background-image: url('assets/image/1.jpg')"></div>
-            <p class="project-title">Downtown Business Hub</p>
+        <!-- Description -->
+        <div class="popup-description"></div>
+
+        <!-- Gallery -->
+        <div class="popup-gallery">
+            <img class="gallery-main-image" src="" alt="Gallery Image">
+            <div class="gallery-dots">
+                <!-- Dots will be added dynamically by JavaScript -->
+            </div>
         </div>
 
-        <!-- Project 3 -->
-        <div class="project-card" data-category="industrial"
-             data-images='["https://source.unsplash.com/random/800x600?construction13","https://source.unsplash.com/random/800x600?construction14","https://source.unsplash.com/random/800x600?construction15","https://source.unsplash.com/random/800x600?construction16","https://source.unsplash.com/random/800x600?construction17","https://source.unsplash.com/random/800x600?construction18"]'
-             data-description="Modern industrial warehouse with automated systems and green energy features.">
-            <div class="image" style="background-image: url('assets/image/3.jpg')"></div>
-            <p class="project-title">Smart Industrial Hub</p>
+        <!-- Project Requirements -->
+        <div class="popup-requirements">
+            <h3>Project Requirements</h3>
+            <p class="requirements-text"></p>
         </div>
 
-        <!-- Project 4 -->
-        <div class="project-card" data-category="infrastructure"
-             data-images='["https://source.unsplash.com/random/800x600?construction19","https://source.unsplash.com/random/800x600?construction20","https://source.unsplash.com/random/800x600?construction21","https://source.unsplash.com/random/800x600?construction22","https://source.unsplash.com/random/800x600?construction23","https://source.unsplash.com/random/800x600?construction24"]'
-             data-description="A cutting-edge infrastructure project focused on sustainable urban development.">
-            <div class="image" style="background-image: url('assets/image/4.jpg')"></div>
-            <p class="project-title">Urban Infrastructure Expansion</p>
-        </div>
-    </div>
-
-    <!-- Projects Popup -->
-    <div id="projects-popup" class="projects-popup">
-        <div class="popup-content">
-            <span class="close-btn">&times;</span>
-            <h2 class="popup-title">Project Details</h2>
-            <p class="popup-description"></p>
-            <div class="popup-gallery"></div>
+        <!-- Products Used -->
+        <div class="popup-products">
+            <h3>Products Used</h3>
+            <ul>
+                <!-- Products will be added dynamically by JavaScript -->
+            </ul>
         </div>
     </div>
-</section>
-
-
+</div>
 
 
 <footer class="footer">
@@ -192,32 +181,10 @@
         </div>
     </div>
 
-    <!-- Interactive Maps Section -->
-    <div class="footer-maps">
-        <div class="map-container map-card">
-            <h3 class="map-title pulse">🌍 New York</h3>
-            <iframe src="https://maps.google.com/maps?q=new%20york&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                    class="footer-map"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <div class="map-container map-card">
-            <h3 class="map-title pulse">🗼 London</h3>
-            <iframe src="https://maps.google.com/maps?q=london&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                    class="footer-map"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <div class="map-container map-card">
-            <h3 class="map-title pulse">🗻 Tokyo</h3>
-            <iframe src="https://maps.google.com/maps?q=tokyo&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                    class="footer-map"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </div>
-
+    <!-- Footer Line -->
     <div class="footer-line glow-line"></div>
+
+    <!-- Bottom Links -->
     <div class="footer-bottom">
         <div class="footer-bottom-links">
             <a href="commitment.html" class="link-underline">Commitment</a>
@@ -227,7 +194,20 @@
             <a href="cookie.html" class="link-underline">Cookie Policy</a>
         </div>
     </div>
+
+    <!-- Footer Line -->
     <div class="footer-line glow-line"></div>
+
+    <!-- Location Section -->
+    <div class="footer-locations">
+        <div class="location-container">
+            <a href="https://maps.google.com/maps?q=mainoffice+remera+1+kk+st.+4+mnamn" target="_blank" class="location-link">📍 Main Office, Remera 1 KK St. 4 Mnamn</a>
+            <a href="https://maps.google.com/maps?q=new+york" target="_blank" class="location-link">📍 New York</a>
+            <a href="https://maps.google.com/maps?q=london" target="_blank" class="location-link">📍 London</a>
+        </div>
+    </div>
+
+    <!-- Social Section -->
     <div class="footer-social">
         <p class="logo-glow">@HOMNA 2025</p>
         <div class="social-icons">
@@ -242,9 +222,13 @@
             </a>
         </div>
     </div>
+
+    <!-- Footer Logo -->
     <div class="footer-logo">
         <p class="logo-glow">HOMNA</p>
     </div>
+
+
 </footer>
 
 <script src="assets/js/projects.js"></script>

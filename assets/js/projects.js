@@ -1,4 +1,4 @@
-// Select elements
+// Select elements for navigation menu
 const hamburger = document.querySelector('.hamburger-menu');
 const navOverlay = document.querySelector('.nav-overlay');
 const menuContainer = document.querySelector('.menu-container');
@@ -98,69 +98,198 @@ goBackButton.addEventListener('click', () => {
   tl.play(); // Play the main menu animation
 });
 
+// Sample project data (8 projects)
+const projects = [
+  {
+    title: "Disner Basha Ram",
+    description: "We’ve just been trying to help me see someone you want and we don’t understand it. It’s better than our own.",
+    image: "assets/image/1.jpg",
+    gallery: ["assets/image/1.jpg", "assets/image/2.jpg", "assets/image/3.jpg"],
+    requirements: "This project required extensive planning and coordination with multiple stakeholders. The goal was to create a sustainable and innovative design that meets the needs of the community.",
+    products: ["Product A", "Product B", "Product C"],
+    tags: ["BASH", "Cafe Bashan, Johannes"]
+  },
+  {
+    title: "Cerfener Platte Lifestojetordism",
+    description: "Looking at us for our natural passion that you’re looking for is a good thing!",
+    image: "assets/image/2.jpg",
+    gallery: ["assets/image/2.jpg", "assets/image/3.jpg", "assets/image/1.jpg"],
+    requirements: "The project involved advanced architectural techniques and eco-friendly materials to create a modern living space.",
+    products: ["Product D", "Product E", "Product F"],
+    tags: ["CERFENT ARRECTURE", "Karma, Rana"]
+  },
+  {
+    title: "Tunnel Swimcujazzas",
+    description: "The goal is to learn, so I can read the instructions and discuss all kinds of matters in this room according to a beautiful...",
+    image: "assets/image/3.jpg",
+    gallery: ["assets/image/3.jpg", "assets/image/1.jpg", "assets/image/2.jpg"],
+    requirements: "This project focused on creating a seamless underground tunnel system with state-of-the-art technology.",
+    products: ["Product G", "Product H", "Product I"],
+    tags: ["TRANSFORMATION INTRACTING TIME", "Minnipeg, David"]
+  },
+  {
+    title: "Karma Mine",
+    description: "This way you are pleased to accept my condition.",
+    image: "assets/image/4.jpg",
+    gallery: ["assets/image/4.jpg", "assets/image/1.jpg", "assets/image/2.jpg"],
+    requirements: "The project aimed to develop a sustainable mining solution with minimal environmental impact.",
+    products: ["Product J", "Product K", "Product L"],
+    tags: ["CONCEPT: MINING", "Karma, Samba"]
+  },
+  {
+    title: "Mohammed VI Tower",
+    description: "Café is close to a central building in harmony with the community of Mennipeg VI Tower. It will be built from a museum.",
+    image: "assets/image/5.jpg",
+    gallery: ["assets/image/5.jpg", "assets/image/1.jpg", "assets/image/2.jpg"],
+    requirements: "The project involved constructing a high-rise tower with a mix of residential and commercial spaces.",
+    products: ["Product M", "Product N", "Product O"],
+    tags: ["3 July, Morocco"]
+  },
+  {
+    title: "Moments Club",
+    description: "High energy weather for free summer products.",
+    image: "assets/image/6.jpg",
+    gallery: ["assets/image/6.jpg", "assets/image/1.jpg", "assets/image/2.jpg"],
+    requirements: "The project focused on creating a vibrant social club with modern amenities and a luxurious atmosphere.",
+    products: ["Product P", "Product Q", "Product R"],
+    tags: ["CEMENT ARRECTURE", "Samba, Clib"]
+  },
+  {
+    title: "Aura Home Apartments",
+    description: "If you have used your assistance for your activities or accommodations?",
+    image: "assets/image/7.jpg",
+    gallery: ["assets/image/7.jpg", "assets/image/1.jpg", "assets/image/2.jpg"],
+    requirements: "The project aimed to design affordable yet stylish apartments for urban living.",
+    products: ["Product S", "Product T", "Product U"],
+    tags: ["IMAGE: BRANTHENE*", "Marek, Sale"]
+  },
+  {
+    title: "Bendsburg Canal Tunnel",
+    description: "The mountains are warm, warm and peaceful throughout the country. The mountain has a wide variety of vegetation and terrain.",
+    image: "assets/image/8.jpg",
+    gallery: ["assets/image/8.jpg", "assets/image/1.jpg", "assets/image/2.jpg"],
+    requirements: "The project involved building a tunnel under a canal to improve transportation infrastructure.",
+    products: ["Product V", "Product W", "Product X"],
+    tags: ["4 Parking, Germany"]
+  }
+];
 
+// Function to create project cards
+function createProjectCard(project) {
+  const card = document.createElement("div");
+  card.classList.add("project-card");
 
+  const image = document.createElement("img");
+  image.src = project.image;
+  image.alt = project.title;
 
+  const title = document.createElement("h3");
+  title.textContent = project.title;
 
-// Filter Functionality
-document.querySelectorAll('.filter-buttons button').forEach(button => {
-    button.addEventListener('click', () => {
-        const filter = button.dataset.filter;
-        document.querySelectorAll('.filter-buttons button').forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
+  const description = document.createElement("p");
+  description.textContent = project.description;
 
-        document.querySelectorAll('.project-card').forEach(project => {
-            project.style.display =
-                (filter === 'all' || project.dataset.category === filter)
-                ? 'block'
-                : 'none';
-        });
+  const tags = document.createElement("div");
+  tags.classList.add("tags");
+  project.tags.forEach(tag => {
+    const tagElement = document.createElement("span");
+    tagElement.textContent = tag;
+    tags.appendChild(tagElement);
+  });
+
+  card.appendChild(image);
+  card.appendChild(title);
+  card.appendChild(description);
+  card.appendChild(tags);
+
+  // Add click event to open popup
+  card.addEventListener("click", () => openPopup(project));
+
+  return card;
+}
+
+// Function to render projects
+function renderProjects() {
+  console.log("Rendering projects..."); // Debugging line
+  const projectsGrid = document.getElementById("projects-grid");
+  if (!projectsGrid) {
+    console.error("projects-grid element not found!"); // Debugging line
+    return;
+  }
+  projects.forEach(project => {
+    const card = createProjectCard(project);
+    projectsGrid.appendChild(card);
+  });
+}
+
+// Function to open popup
+function openPopup(project) {
+  console.log("Opening popup for project:", project.title); // Debugging line
+
+  // Select popup elements
+  const popup = document.getElementById("project-popup");
+  const popupImage = popup.querySelector(".popup-image");
+  const popupDescription = popup.querySelector(".popup-description");
+  const galleryMainImage = popup.querySelector(".gallery-main-image");
+  const galleryDots = popup.querySelector(".gallery-dots");
+  const requirementsText = popup.querySelector(".requirements-text");
+  const popupProducts = popup.querySelector(".popup-products ul");
+
+  if (!popup || !popupImage || !popupDescription || !galleryMainImage || !galleryDots || !requirementsText || !popupProducts) {
+    console.error("One or more popup elements not found!"); // Debugging line
+    return;
+  }
+
+  // Set full-width image and description
+  popupImage.src = project.image;
+  popupImage.alt = project.title;
+  popupDescription.textContent = project.description;
+
+  // Set gallery images and dots
+  galleryDots.innerHTML = ""; // Clear previous dots
+  project.gallery.forEach((img, index) => {
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    if (index === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => {
+      galleryMainImage.src = img; // Update main image
+      galleryDots.querySelectorAll(".dot").forEach(d => d.classList.remove("active")); // Remove active class from all dots
+      dot.classList.add("active"); // Add active class to clicked dot
     });
+    galleryDots.appendChild(dot);
+  });
+  galleryMainImage.src = project.gallery[0]; // Set the first image as default
+
+  // Set project requirements
+  requirementsText.textContent = project.requirements;
+
+  // Set products used
+  popupProducts.innerHTML = ""; // Clear previous products
+  project.products.forEach(product => {
+    const productItem = document.createElement("li");
+    productItem.textContent = product;
+    popupProducts.appendChild(productItem);
+  });
+
+  // Show popup
+  popup.style.display = "block";
+  console.log("Popup displayed successfully!"); // Debugging line
+}
+
+// Function to close popup
+function closePopup() {
+  const popup = document.getElementById("project-popup");
+  popup.style.display = "none";
+}
+
+// Initialize everything
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM fully loaded and parsed"); // Debugging line
+  renderProjects(); // Render projects
+  const closeBtn = document.querySelector(".close-popup");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closePopup);
+  } else {
+    console.error("close-popup button not found!"); // Debugging line
+  }
 });
-
-// Popup Functionality
-document.addEventListener("DOMContentLoaded", function () {
-    const projects = document.querySelectorAll(".project-card");
-    const popup = document.getElementById("projects-popup");
-    const popupTitle = document.querySelector(".popup-title");
-    const popupDescription = document.querySelector(".popup-description");
-    const popupGallery = document.querySelector(".popup-gallery");
-
-    function openPopup(title, description, images) {
-        popupTitle.textContent = title;
-        popupDescription.textContent = description;
-        popupGallery.innerHTML = "";
-
-        images.forEach(image => {
-            const imgDiv = document.createElement("div");
-            imgDiv.classList.add("popup-image");
-            imgDiv.style.backgroundImage = `url('${image}')`;
-            popupGallery.appendChild(imgDiv);
-        });
-
-        popup.style.display = "flex";
-    }
-
-    projects.forEach(project => {
-        project.addEventListener("click", () => {
-            const title = project.querySelector(".project-title").textContent;
-            const description = project.dataset.description;
-            const images = JSON.parse(project.dataset.images);
-            openPopup(title, description, images);
-        });
-    });
-
-    document.querySelector(".close-btn").addEventListener("click", () => {
-        popup.style.display = "none";
-    });
-
-    popup.addEventListener("click", (e) => {
-        if (e.target === popup) popup.style.display = "none";
-    });
-});
-
-// GSAP Animations (keep from original)
-gsap.from(".header", { opacity: 0, y: -50, duration: 1 });
-gsap.from(".projects-header p", { opacity: 0, y: 50, duration: 1, delay: 0.3 });
-gsap.from(".filter-buttons button", { opacity: 0, y: 20, duration: 0.6, stagger: 0.1, delay: 0.5 });
-gsap.from(".project-card", { opacity: 0, scale: 0.8, duration: 1, stagger: 0.2, delay: 0.8 });

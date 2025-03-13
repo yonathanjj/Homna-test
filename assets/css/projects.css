@@ -372,160 +372,323 @@ body {
 }
 
 
-/* Latest Projects Section */
-.latest-projects {
-  background-color: #001219;
-  color: #fff;
-  padding: 120px 5% 60px; /* Increased the top padding */
-  width: 100%;
+/* General Styles (Your Original CSS) */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.projects-section {
+  width: 70%;
   margin: 0 auto;
-  overflow: hidden;
+  padding: 40px 0;
+  text-align: center;
+  margin-top: 6rem;
 }
 
-/* Header Styles */
-.header {
-  font-size: 5rem; /* Increased the font size */
-  font-family: 'Playfair Display', serif;
-  font-weight: bold;
-  letter-spacing: 1.5px;
-  color: #fff;
-  text-align: left;
-  margin-bottom: 40px;
+.projects-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
 }
 
-.projects-header p {
-  font-size: 1.8rem; /* Increased the font size for the text under the header */
-  font-family: 'Playfair Display', serif;
-  color: #fff;
-  margin-top: 10px;
-  text-align: left;
+.projects-intro {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
 }
 
-/* Filter Buttons */
-.filter-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin: 2rem 0;
-  justify-content: center;
-}
-
-.filter-buttons button {
-  border: 2px solid blue;
-  background-color: transparent;
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.filter-buttons button.active,
-.filter-buttons button:hover {
-  background-color: blue;
-  color: white;
-}
-
-/* Projects Grid */
+/* Masonry Layout with CSS Columns (Your Original CSS) */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin-bottom: 40px;
+  column-count: 3;
+  column-gap: 20px;
 }
 
 .project-card {
-  cursor: pointer;
-  position: relative;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  break-inside: avoid;
+  margin-bottom: 20px;
+  cursor: pointer;
 }
 
-.project-card .image {
-  background-size: cover;
-  background-position: center;
-  height: 500px;
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
   width: 100%;
-  transition: transform 0.3s ease;
+  height: auto;
+  display: block;
 }
 
-.project-card:hover .image {
-  transform: scale(0.98);
-}
-
-.project-title {
+.project-card h3 {
   font-size: 1.5rem;
-  font-weight: bold;
-  color: #fff;
-  margin-top: 15px;
-  text-align: left;
+  margin: 15px 0;
+  color: #222;
+  padding: 0 15px;
 }
 
-/* Popup Styles */
-.projects-popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+.project-card p {
+  font-size: 1rem;
+  color: #555;
+  padding: 0 15px 15px;
+  margin: 0;
+}
+
+.project-card .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 15px 15px;
+}
+
+.project-card .tags span {
+  background: #e0e0e0;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Responsive Design (Your Original CSS) */
+@media (max-width: 768px) {
+  .projects-grid {
+    column-count: 2;
+  }
+
+  .projects-section h2 {
+    font-size: 2rem;
+  }
+
+  .projects-intro {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-grid {
+    column-count: 1;
+  }
+}
+
+/* Popup Modal Styles */
+.popup-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  overflow-y: auto;
+  font-family: 'Arial', sans-serif;
 }
 
 .popup-content {
-    background: black;
-    width: 90%;
-    max-width: 1500px; /* Increased the max width */
-    padding: 30px;
-    color: white;
-    position: relative;
-    border-radius: 8px;
-    text-align: left;
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 32px;
-    cursor: pointer;
-    color: white;
+/* Sticky Close Button */
+.close-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  transition: background-color 0.3s ease;
 }
 
-.popup-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 25px;
+.close-popup:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Full-Width Image with Overlay Text */
+.popup-image-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 .popup-image {
-    width: 100%;
-    height: 300px; /* Increased height to 300px */
-    background-size: cover;
-    background-position: center;
-    border-radius: 5px;
-    cursor: pointer;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Media Queries for Responsiveness */
+.popup-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-image-overlay h2 {
+  color: #fff;
+  font-size: 2.5rem;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Description Section */
+.popup-description {
+  margin: 20px 0;
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Gallery Section */
+.popup-gallery {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.gallery-main-image {
+  width: 100%;
+  max-width: 800px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0 auto;
+  transition: opacity 0.5s ease;
+}
+
+.gallery-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.gallery-dots .dot {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-dots .dot:hover {
+  transform: scale(1.2);
+}
+
+.gallery-dots .dot.active {
+  background-color: #333;
+}
+
+/* Project Requirements Section */
+.popup-requirements {
+  margin: 40px 0;
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.popup-requirements h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+/* Products Used Section */
+.popup-products {
+  margin: 40px 0;
+  font-size: 1.1rem;
+  color: #555;
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.popup-products h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.popup-products ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.popup-products ul li {
+  background: #f1f1f1;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 4px;
+  font-size: 1rem;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: 1fr; /* Stack vertically on mobile */
-    }
+  .popup-image-container {
+    height: 200px;
+  }
 
-    .popup-gallery {
-        grid-template-columns: repeat(2, 1fr); /* Display 2 images per row on smaller screens */
-    }
+  .popup-image-overlay h2 {
+    font-size: 2rem;
+  }
 
-    .popup-image {
-        height: 200px; /* Adjust image size for smaller screens */
-    }
+  .gallery-main-image {
+    height: 300px;
+  }
+
+  .close-popup {
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+  }
 }
-
 
 
 
@@ -583,70 +746,30 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* Maps Section */
-.footer-maps {
-    width: 90%;
-    margin: 40px auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    perspective: 1000px;
-}
-
-.map-card {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform-style: preserve-3d;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-}
-
-.map-card:hover {
-    transform: translateY(-10px) rotateX(5deg) rotateY(2deg);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-}
-
-.map-title {
-    padding: 18px 25px;
-    font-size: 1.2rem;
-    margin: 0;
-    background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, transparent 100%);
-    position: relative;
-}
-
-.footer-map {
-    width: 100%;
-    height: 180px;
-    border: 0;
-    filter: grayscale(80%) contrast(110%);
-}
-
 /* Bottom Section */
 .footer-bottom {
     width: 90%;
     margin: 20px auto;
     color: #ffffff;
+    text-align: center; /* Center align text */
 }
 
 .footer-bottom-links {
-color: white !important; /* Force white text */
-  text-decoration: none;
     display: flex;
     gap: 30px;
     justify-content: center;
     flex-wrap: wrap;
-    color: #ffffff;
+    margin-bottom: 20px; /* Space between links and locations */
 }
 
 .footer-bottom-links a {
-  color: white !important; /* Force white text */
-  text-decoration: none;
-  transition: color 0.3s ease;
+    color: white !important; /* Force white text */
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .footer-bottom-links a:hover {
-  color: #7ab4ff !important; /* Optional: Change color on hover */
+    color: #7ab4ff !important; /* Optional: Change color on hover */
 }
 
 /* Social Section */
@@ -687,6 +810,38 @@ color: white !important; /* Force white text */
     text-align: right;
     font-size: 1.8rem;
     font-weight: 700;
+}
+
+/* Location Section */
+.footer-locations {
+    width: 100%;
+    padding: 40px 0;
+    background: rgba(255, 255, 255, 0.05); /* Slight background for contrast */
+    margin-top: 20px; /* Space above the location section */
+}
+
+.location-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.location-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.location-link:hover {
+    color: #7ab4ff; /* Change color on hover */
+    transform: translateY(-3px); /* Slight lift on hover */
 }
 
 /* Animations */
@@ -741,40 +896,35 @@ color: white !important; /* Force white text */
     .footer-links { justify-content: center; }
 }
 
-@media (max-width: 992px) {
-    .footer-maps { grid-template-columns: repeat(2, 1fr); }
-}
-
 @media (max-width: 768px) {
     .footer { padding: 30px 0 20px; }
-
-    .footer-maps {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .map-card:hover { transform: translateY(-5px); }
 
     .footer-text { font-size: 1.1rem; }
 
     .footer-bottom-links {
         flex-direction: column;
+                align-items: center; /* Centers the links */
         text-align: center;
         gap: 15px;
     }
 
+.footer-links-col {
+        align-items: center; /* Centers each column of links */
+    }
     .footer-social {
         flex-direction: column;
         gap: 25px;
         text-align: center;
     }
+
+    .location-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
 }
 
 @media (max-width: 480px) {
-    .map-title { font-size: 1rem; padding: 15px 20px; }
-    .footer-map { height: 150px; }
     .footer-links { flex-direction: column; gap: 25px; }
     .footer-logo { text-align: center; }
 }
-
-
