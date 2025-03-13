@@ -3,6 +3,9 @@ const hamburger = document.querySelector('.hamburger-menu');
 const navOverlay = document.querySelector('.nav-overlay');
 const menuContainer = document.querySelector('.menu-container');
 const navLinks = document.querySelectorAll('.nav-links li');
+const serviceLink = document.querySelector('.service-link');
+const solutionsGrid = document.querySelector('.solutions-grid');
+const goBackButton = document.querySelector('.go-back-button');
 
 // GSAP Timeline for overlay menu
 const tl = gsap.timeline({ paused: true });
@@ -47,6 +50,52 @@ document.addEventListener('click', (e) => {
     navOverlay.classList.remove('active');
     hamburger.classList.remove('active');
   }
+});
+
+// Toggle solutions grid
+serviceLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  solutionsGrid.classList.add('active'); // Show solutions grid
+
+  // Hide other nav links when solutions grid is active
+  navLinks.forEach(link => {
+    if (!link.contains(serviceLink)) {
+      link.style.display = 'none';
+    }
+  });
+
+  // Animate the solutions grid in
+  gsap.from(solutionsGrid.children, {
+    opacity: 0,
+    y: 20,
+    stagger: 0.1,
+    duration: 0.5,
+    ease: "power2.out"
+  });
+});
+
+// Go Back to Main Menu with Animation
+goBackButton.addEventListener('click', () => {
+  // Animate the solutions grid out
+  gsap.to(solutionsGrid, {
+    opacity: 0,
+    y: -20,
+    duration: 0.3,
+    ease: "power2.out",
+    onComplete: () => {
+      solutionsGrid.classList.remove('active'); // Hide solutions grid
+    }
+  });
+
+  // Show other nav links again
+  navLinks.forEach(link => {
+    link.style.display = 'block';
+  });
+
+  // Ensure the main menu is visible
+  navOverlay.classList.add('active');
+  hamburger.classList.add('active');
+  tl.play(); // Play the main menu animation
 });
 
 

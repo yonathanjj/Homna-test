@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plaster - Homna ltd</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+<style>
+    /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body and Page Background */
+body {
+  background-color: #f8f9fa; /* Cool grey background */
+  font-family: 'Playfair Display', serif;
+  overflow-x: hidden;
+}
+
+
+/* General navbar styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(8, 42, 90, 0.2);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  z-index: 1000;
+  height: 100px;
+  transition: all 0.3s ease;
+}
+
+/* Logo Styling */
+.navbar a.logo img {
+  width: 180px;
+  transition: transform 0.3s ease;
+}
+
+/* Full-screen Overlay Menu */
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(8, 42, 90, 0.98);
+  backdrop-filter: blur(15px);
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.nav-overlay.active {
+  transform: translateX(0);
+}
+
+/* Menu Container Structure */
+.menu-container {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0 40px;
+}
+
+/* Menu Content */
+.menu-content {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Left Column Styling (Nav Links) */
+.nav-links {
+  width: 100%;
+  padding-right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  margin: 1.5rem 0;
+  position: relative; /* Needed for underline positioning */
+}
+
+/* Main Nav Links Styling */
+.nav-links a {
+  color: #fff;
+  font-size: 2.5rem;
+  text-decoration: none;
+  display: block;
+  transition: color 0.3s ease, transform 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  transform: translateY(-5px);
+  color: #7ab4ff;
+}
+
+/* Underline Divider */
+.underline {
+  position: absolute;
+  bottom: -5px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%; /* Adjust width as needed */
+  height: 2px;
+  background-color: #7ab4ff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-links li:hover .underline {
+  opacity: 1;
+}
+
+/* Explore Products Button Styling */
+.explore-products {
+  margin-top: 3rem;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 35px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.explore-products:hover {
+  background-color: #7ab4ff;
+  border-color: #7ab4ff;
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    height: 70px;
+    padding: 15px 5%;
+  }
+
+  .navbar a.logo img {
+    width: 120px;
+  }
+
+  .nav-links a {
+    font-size: 2rem;
+  }
+
+  .menu-container {
+    flex-direction: column;
+    width: 100%;
+    padding: 40px 0;
+    align-items: center;
+  }
+
+  .nav-links,
+  .contact-section {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+
+  .underline {
+    width: 70%;
+  }
+
+  .explore-products {
+    font-size: 1.3rem;
+    padding: 0.8rem 1.8rem;
+  }
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1001;
+  position: relative;
+  display: block;
+}
+
+.hamburger-menu .bar {
+  width: 35px;
+  height: 3px;
+  background: #fff;
+  margin: 6px 0;
+  transition: all 0.3s ease;
+}
+
+/* Animated X Transformation */
+.hamburger-menu.active .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  .hamburger-menu .bar {
+    width: 30px;
+    height: 2.5px;
+  }
+}
+
+/* Solutions Grid */
+.solutions-grid {
+  display: none; /* Hidden by default */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Dynamic columns */
+  gap: 10px; /* Smaller horizontal gap */
+  padding: 80px 20px 20px; /* More padding at the top for the button */
+  background: rgba(8, 42, 90, 0.98);
+  backdrop-filter: blur(15px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.solutions-grid.active {
+  display: grid;
+}
+
+/* Go Back Button */
+.go-back-button {
+  position: fixed; /* Fixed position to keep it visible */
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background: #7ab4ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  z-index: 1001; /* Ensure it's above the grid */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.go-back-button:hover {
+  background-color: #082a5a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Solution Cards */
+.solution-card {
+  position: relative;
+  width: 200px; /* Fixed width */
+  height: 250px; /* Fixed height */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto; /* Center cards */
+}
+
+
+.solution-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.solution-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the card */
+}
+
+.solution-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)); /* Stronger gradient overlay */
+  color: #fff;
+  text-align: center;
+}
+
+.solution-content h3 {
+  font-size: 1.2rem; /* Title size */
+  margin-bottom: 10px;
+  font-weight: bold; /* Make title bolder */
+}
+
+.solution-content a {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #7ab4ff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9rem; /* Button size */
+  transition: background-color 0.3s ease;
+}
+
+.solution-content a:hover {
+  background-color: #082a5a;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .solutions-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Smaller cards for medium screens */
+  }
+
+  .solution-card {
+    width: 180px; /* Smaller width */
+    height: 225px; /* Smaller height */
+  }
+}
+
+@media (max-width: 768px) {
+  .solutions-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 2 columns for mobile */
+    padding: 60px 10px 10px; /* Adjust padding for mobile */
+  }
+
+  .solution-card {
+    width: 150px; /* Even smaller width */
+    height: 187.5px; /* Even smaller height */
+  }
+
+  .solution-content {
+    padding: 10px; /* Smaller padding for mobile */
+  }
+
+  .solution-content h3 {
+    font-size: 1rem; /* Smaller title size */
+  }
+
+  .solution-content a {
+    padding: 6px 12px; /* Smaller button size */
+    font-size: 0.8rem;
+  }
+
+  .go-back-button {
+    top: 10px;
+    left: 10px;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+
+
+
+
+
+
+
+/* Reset Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Banner Section */
+.banner {
+    position: relative;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.banner img {
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+}
+
+.banner h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 36px;
+}
+
+/* Product Grid */
+.products {
+    width: 90%;
+    margin: 40px auto;
+}
+
+.products h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #333;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #007BFF; /* Blue border */
+}
+
+.product:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    border-color: #0056b3; /* Darker blue on hover */
+}
+
+.product img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.product-name {
+    margin: 15px 0 10px;
+    font-size: 18px;
+    color: white;
+    background-color: #007BFF; /* Blue background */
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Why Choose Section */
+.why-choose {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 60px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.left, .right {
+    width: 48%;
+    text-align: left; /* Align text to the left */
+}
+
+.reason {
+    margin: 20px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.right {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* Calculator */
+#calculator {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#calculator input, #calculator select, #calculator button {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#calculator button {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#calculator button:hover {
+    background-color: #0056b3;
+}
+
+.warning {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .why-choose {
+        flex-direction: column;
+    }
+
+    .left, .right {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+/* Base Styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #f8f9fa;
+    overflow-x: hidden;
+}
+
+/* Main Footer Styles */
+.footer {
+    background: linear-gradient(135deg, #2E368F 0%, #1A237E 100%);
+    color: white;
+    padding: 40px 0 20px;
+    position: relative;
+    margin-bottom: -20px; /* Fixes white space issue */
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+}
+
+.footer-content {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding-bottom: 30px;
+}
+
+.footer-text {
+    width: 45%;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    animation: textReveal 1s ease-out;
+}
+
+/* Links Section */
+.footer-links {
+    display: flex;
+    gap: 60px;
+    font-size: 1.2rem;
+}
+
+.footer-links-col {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-links-col a {
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+/* Maps Section */
+.footer-maps {
+    width: 90%;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    perspective: 1000px;
+}
+
+.map-card {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.map-card:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(2deg);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.map-title {
+    padding: 18px 25px;
+    font-size: 1.2rem;
+    margin: 0;
+    background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+    position: relative;
+}
+
+.footer-map {
+    width: 100%;
+    height: 180px;
+    border: 0;
+    filter: grayscale(80%) contrast(110%);
+}
+
+/* Bottom Section */
+.footer-bottom {
+    width: 90%;
+    margin: 20px auto;
+    color: #ffffff;
+}
+
+.footer-bottom-links {
+color: white !important; /* Force white text */
+  text-decoration: none;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: #ffffff;
+}
+
+.footer-bottom-links a {
+  color: white !important; /* Force white text */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+  color: #7ab4ff !important; /* Optional: Change color on hover */
+}
+
+/* Social Section */
+.footer-social {
+    width: 90%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-icons {
+    display: flex;
+    gap: 25px;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.social-icon img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+/* Logo Section */
+.footer-logo {
+    width: 90%;
+    margin: 20px auto;
+    text-align: right;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+/* Animations */
+@keyframes textReveal {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+    0% { text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+    50% { text-shadow: 0 0 20px rgba(255,255,255,0.6); }
+    100% { text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+}
+
+.pulse { animation: pulseGlow 2s infinite; }
+
+/* Interactive Elements */
+.hover-grow:hover { transform: translateX(8px) scale(1.05); }
+
+.link-underline {
+    position: relative;
+    padding-bottom: 3px;
+}
+
+.link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s ease;
+}
+
+.link-underline:hover::after { width: 100%; }
+
+.hover-float:hover { transform: translateY(-5px); }
+
+.glow-line {
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+    box-shadow: 0 0 15px rgba(255,255,255,0.2);
+}
+
+.logo-glow { text-shadow: 0 0 15px rgba(255,255,255,0.4); }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .footer-content { flex-direction: column; }
+    .footer-text { width: 100%; text-align: center; }
+    .footer-links { justify-content: center; }
+}
+
+@media (max-width: 992px) {
+    .footer-maps { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .footer { padding: 30px 0 20px; }
+
+    .footer-maps {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .map-card:hover { transform: translateY(-5px); }
+
+    .footer-text { font-size: 1.1rem; }
+
+    .footer-bottom-links {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .footer-social {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .map-title { font-size: 1rem; padding: 15px 20px; }
+    .footer-map { height: 150px; }
+    .footer-links { flex-direction: column; gap: 25px; }
+    .footer-logo { text-align: center; }
+}
+
+
+/* Info Modal Overlay */
+.info-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.info-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Info Modal Content */
+.info-modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.info-modal-overlay.active .info-modal-content {
+  transform: scale(1);
+}
+
+/* Close Button */
+.close-info-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.close-info-modal:hover {
+  color: #ff6347;
+}
+
+/* Info Modal Title */
+.info-modal-title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #2E368F;
+}
+
+/* Info Modal Text */
+.info-modal-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+</style>
+<body>
+
+
+<nav class="navbar">
+    <a href="#" class="logo">
+        <img src="/assets/image/logoen.png" alt="homna Logo">
+    </a>
+    <div class="hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="nav-overlay">
+        <div class="menu-container">
+            <div class="menu-content">
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a><div class="underline"></div></li>
+                    <li><a href="../about.html">About</a><div class="underline"></div></li>
+                    <li><a href="#" class="service-link">Solution</a><div class="underline"></div></li>
+                    <li><a href="../projects.html">Projects</a><div class="underline"></div></li>
+                    <li><a href="../contact.html">Contact</a><div class="underline"></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Solutions Grid -->
+<div class="solutions-grid">
+    <!-- Go Back Button -->
+    <button class="go-back-button">Go Back to Main Menu</button>
+
+    <!-- Solution Cards -->
+    <div class="solution-card">
+        <img src="/assets/image/1.jpg" alt="Solution 1">
+        <div class="solution-content">
+            <h3>Basement</h3>
+            <a href="../solutions/Basement.html">Explore</a>
+        </div>
+    </div>
+    <div class="solution-card">
+        <img src="/assets/image/solution2.jpg" alt="Solution 2">
+        <div class="solution-content">
+            <h3>Bathroom</h3>
+            <a href="../solutions/Bathroom.html">Explore</a>
+        </div>
+    </div>
+    <div class="solution-card">
+        <img src="/assets/image/solution1.jpg" alt="Solution 1">
+        <div class="solution-content">
+            <h3>Expansion joints</h3>
+            <a href="../solutions/Expansion-Joints.html">Explore</a>
+        </div>
+    </div>
+    <div class="solution-card">
+        <img src="/assets/image/solution2.jpg" alt="Solution 2">
+        <div class="solution-content">
+            <h3>External Wall</h3>
+            <a href="../solutions/External-Wall.html">Explore</a>
+        </div>
+    </div><div class="solution-card">
+    <img src="/assets/image/solution1.jpg" alt="Solution 1">
+    <div class="solution-content">
+        <h3>Internal wall</h3>
+        <a href="../solutions/internal-wall.html">Explore</a>
+    </div>
+</div>
+    <div class="solution-card">
+        <img src="/assets/image/solution2.jpg" alt="Solution 2">
+        <div class="solution-content">
+            <h3>Plaster</h3>
+            <a href="../solutions/Plaster.html">Explore</a>
+        </div>
+    </div><div class="solution-card">
+    <img src="/assets/image/solution1.jpg" alt="Solution 1">
+    <div class="solution-content">
+        <h3>Roof</h3>
+        <a href="../solutions/Roof.html">Explore</a>
+    </div>
+</div>
+    <div class="solution-card">
+        <img src="/assets/image/solution2.jpg" alt="Solution 2">
+        <div class="solution-content">
+            <h3>Swimming pool</h3>
+            <a href="../solutions/swimming-pool.html">Explore</a>
+        </div>
+    </div>
+    <div class="solution-card">
+        <img src="/assets/image/solution2.jpg" alt="Solution 2">
+        <div class="solution-content">
+            <h3>Tile Fixing</h3>
+            <a href="../solutions/Tile-Fixing.html">Explore</a>
+        </div>
+    </div>
+    <div class="solution-card">
+        <img src="/assets/image/solution2.jpg" alt="Solution 2">
+        <div class="solution-content">
+            <h3>Water Tank</h3>
+            <a href="../solutions/Water-Tank.html">Explore</a>
+        </div>
+    </div>
+
+
+<!-- Banner Section -->
+<section class="banner">
+    <img src="../assets/image/1.jpg" alt="Internal Wall Solution">
+    <h1>Plaster</h1>
+</section>
+
+<!-- Product Grid Section -->
+<section class="products">
+    <h2>Products</h2>
+    <div class="product-grid">
+        <div class="product">
+            <img src="../assets/image/1.jpg" alt="Product 1">
+            <div class="product-name">Product Name 1</div>
+        </div>
+        <div class="product">
+            <img src="../assets/images/product2.png" alt="Product 2">
+            <div class="product-name">Product Name 2</div>
+        </div>
+        <div class="product">
+            <img src="../assets/images/product3.png" alt="Product 3">
+            <div class="product-name">Product Name 3</div>
+        </div>
+        <div class="product">
+            <img src="../assets/images/product4.png" alt="Product 4">
+            <div class="product-name">Product Name 4</div>
+        </div>
+        <div class="product">
+            <img src="../assets/images/product5.png" alt="Product 5">
+            <div class="product-name">Product Name 5</div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose This Product Section -->
+<section class="why-choose">
+    <div class="left">
+        <h2>Why Choose This Product?</h2>
+        <div class="reason">
+            <h4>✅ Benefit 1</h4>
+            <p>Our products are made from high-quality materials, ensuring durability and long-lasting performance. Perfect for all construction needs.</p>
+        </div>
+        <div class="reason">
+            <h4>✅ Benefit 2</h4>
+            <p>We offer competitive pricing without compromising on quality. Save costs while achieving excellent results.</p>
+        </div>
+        <div class="reason">
+            <h4>✅ Benefit 3</h4>
+            <p>Easy to install and maintain, our products are designed to simplify your construction process.</p>
+        </div>
+        <div class="reason">
+            <h4>✅ Benefit 4</h4>
+            <p>Environmentally friendly options are available, helping you build sustainably.</p>
+        </div>
+    </div>
+    <div class="right">
+        <h2>Calculate Your Needs</h2>
+        <form id="calculator">
+            <label for="category">Select Category:</label>
+            <select id="category" onchange="updateProducts()">
+                <option value="category1">Category 1</option>
+                <option value="category2">Category 2</option>
+                <option value="category3">Category 3</option>
+                <option value="category4">Category 4</option>
+                <option value="category5">Category 5</option>
+                <option value="category6">Category 6</option>
+                <option value="category7">Category 7</option>
+                <option value="category8">Category 8</option>
+                <option value="category9">Category 9</option>
+            </select>
+
+            <label for="product">Choose Product:</label>
+            <select id="product">
+                <!-- Products will be dynamically populated here -->
+            </select>
+
+            <label for="area">Enter Area (sq.m):</label>
+            <input type="number" id="area" placeholder="e.g. 50">
+
+            <button type="button" onclick="calculatePrice()">Calculate Total Price</button>
+            <p id="total-price">Total: $0.00</p>
+            <p class="warning">Tax and other expenses are not included in the total price. Only the price of the product is calculated.</p>
+        </form>
+    </div>
+</section>
+
+
+
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-text">
+            <p class="animated-text">Connecting worlds through innovation. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel magna sit amet nulla efficitur vestibulum.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-links-col">
+                <a href="#" class="hover-grow">About</a>
+                <a href="#" class="hover-grow">Services</a>
+                <a href="#" class="hover-grow">Products</a>
+                <a href="#" class="hover-grow">Projects</a>
+            </div>
+            <div class="footer-links-col">
+                <a href="#" class="hover-grow">Partners</a>
+                <a href="#" class="hover-grow">Insights</a>
+                <a href="#" class="hover-grow">News</a>
+                <a href="#" class="hover-grow">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Maps Section -->
+    <div class="footer-maps">
+        <div class="map-container map-card">
+            <h3 class="map-title pulse">🌍 New York</h3>
+            <iframe src="https://maps.google.com/maps?q=new%20york&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    class="footer-map"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="map-container map-card">
+            <h3 class="map-title pulse">🗼 London</h3>
+            <iframe src="https://maps.google.com/maps?q=london&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    class="footer-map"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="map-container map-card">
+            <h3 class="map-title pulse">🗻 Tokyo</h3>
+            <iframe src="https://maps.google.com/maps?q=tokyo&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    class="footer-map"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+    <div class="footer-line glow-line"></div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-links">
+            <a href="#" class="link-underline">Commitment</a>
+            <a href="#" class="link-underline">Privacy Policy</a>
+            <a href="#" class="link-underline">Legal Information</a>
+            <a href="#" class="link-underline">Suppliers</a>
+            <a href="#" class="link-underline">Cookie Policy</a>
+        </div>
+    </div>
+    <div class="footer-line glow-line"></div>
+    <div class="footer-social">
+        <p class="logo-glow">@HOMNA 2025</p>
+        <div class="social-icons">
+            <a href="#" class="social-icon hover-float">
+                <img src="assets/image/1.jpg" alt="Facebook">
+            </a>
+            <a href="#" class="social-icon hover-float">
+                <img src="linkedin-icon.png" alt="LinkedIn">
+            </a>
+            <a href="#" class="social-icon hover-float">
+                <img src="linkedin-icon.png" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+    <div class="footer-logo">
+        <p class="logo-glow">HOMNA</p>
+    </div>
+</footer>
+
+
+
+<script>
+    // Select elements
+ const hamburger = document.querySelector('.hamburger-menu');
+ const navOverlay = document.querySelector('.nav-overlay');
+ const menuContainer = document.querySelector('.menu-container');
+ const navLinks = document.querySelectorAll('.nav-links li');
+ const serviceLink = document.querySelector('.service-link');
+ const solutionsGrid = document.querySelector('.solutions-grid');
+ const goBackButton = document.querySelector('.go-back-button');
+
+ // GSAP Timeline for overlay menu
+ const tl = gsap.timeline({ paused: true });
+
+ tl.to(navOverlay, {
+   left: 0,
+   duration: 0.5,
+   ease: "power2.out"
+ })
+ .from(menuContainer, {
+   opacity: 0,
+   scale: 0.95,
+   duration: 0.3,
+   ease: "power2.out"
+ })
+ .from(navLinks, {
+   opacity: 0,
+   y: 20,
+   duration: 0.5,
+   stagger: 0.1,
+   ease: "power2.out"
+ }, "-=0.3");
+
+ // Hamburger menu animation
+ hamburger.addEventListener('click', (e) => {
+   e.stopPropagation();
+
+   if (!navOverlay.classList.contains('active')) {
+     tl.play();
+   } else {
+     tl.reverse();
+   }
+
+   navOverlay.classList.toggle('active');
+   hamburger.classList.toggle('active');
+ });
+
+ // Close menu on click outside
+ document.addEventListener('click', (e) => {
+   if (!e.target.closest('.nav-overlay') && navOverlay.classList.contains('active')) {
+     tl.reverse();
+     navOverlay.classList.remove('active');
+     hamburger.classList.remove('active');
+   }
+ });
+
+ // Toggle solutions grid
+ serviceLink.addEventListener('click', (e) => {
+   e.preventDefault();
+   solutionsGrid.classList.add('active'); // Show solutions grid
+
+   // Hide other nav links when solutions grid is active
+   navLinks.forEach(link => {
+     if (!link.contains(serviceLink)) {
+       link.style.display = 'none';
+     }
+   });
+
+   // Animate the solutions grid in
+   gsap.from(solutionsGrid.children, {
+     opacity: 0,
+     y: 20,
+     stagger: 0.1,
+     duration: 0.5,
+     ease: "power2.out"
+   });
+ });
+
+ // Go Back to Main Menu with Animation
+ goBackButton.addEventListener('click', () => {
+   // Animate the solutions grid out
+   gsap.to(solutionsGrid, {
+     opacity: 0,
+     y: -20,
+     duration: 0.3,
+     ease: "power2.out",
+     onComplete: () => {
+       solutionsGrid.classList.remove('active'); // Hide solutions grid
+     }
+   });
+
+   // Show other nav links again
+   navLinks.forEach(link => {
+     link.style.display = 'block';
+   });
+
+   // Ensure the main menu is visible
+   navOverlay.classList.add('active');
+   hamburger.classList.add('active');
+   tl.play(); // Play the main menu animation
+ });
+
+
+
+
+ // Sample product data for each category
+ const productsData = {
+     category1: [
+         { name: "Product 1A", price: 10 },
+         { name: "Product 1B", price: 15 },
+     ],
+     category2: [
+         { name: "Product 2A", price: 20 },
+         { name: "Product 2B", price: 25 },
+     ],
+     // Add more categories and products as needed
+ };
+
+ // Update products based on selected category
+ function updateProducts() {
+     const category = document.getElementById("category").value;
+     const productSelect = document.getElementById("product");
+     productSelect.innerHTML = ""; // Clear previous options
+
+     productsData[category].forEach(product => {
+         const option = document.createElement("option");
+         option.value = product.price;
+         option.textContent = product.name;
+         productSelect.appendChild(option);
+     });
+ }
+
+ // Calculate total price
+ function calculatePrice() {
+     const area = document.getElementById("area").value;
+     const productPrice = document.getElementById("product").value;
+     const total = area * productPrice;
+
+     document.getElementById("total-price").innerText = `Total: $${total.toFixed(2)}`;
+ }
+
+ // Initialize products on page load
+ updateProducts();
+
+</script>
+</body>
+</html>
