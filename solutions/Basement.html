@@ -799,73 +799,6 @@ color: white !important; /* Force white text */
 }
 
 
-/* Info Modal Overlay */
-.info-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.info-modal-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Info Modal Content */
-.info-modal-content {
-  background: #fff;
-  padding: 30px;
-  border-radius: 15px;
-  max-width: 600px;
-  width: 90%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  position: relative;
-  transform: scale(0.9);
-  transition: transform 0.3s ease;
-}
-
-.info-modal-overlay.active .info-modal-content {
-  transform: scale(1);
-}
-
-/* Close Button */
-.close-info-modal {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #333;
-  transition: color 0.3s ease;
-}
-
-.close-info-modal:hover {
-  color: #ff6347;
-}
-
-/* Info Modal Title */
-.info-modal-title {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  color: #2E368F;
-}
-
-/* Info Modal Text */
-.info-modal-text {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #333;
-}
 
 </style>
 <body>
@@ -969,7 +902,7 @@ color: white !important; /* Force white text */
             <a href="../solutions/Water-Tank.html">Explore</a>
         </div>
     </div>
-
+</div>
 
 
 <!-- Banner Section -->
