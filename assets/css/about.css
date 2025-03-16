@@ -253,16 +253,21 @@ body {
   position: fixed; /* Fixed position to keep it visible */
   top: 20px;
   left: 20px;
-  padding: 10px 20px;
+  padding: 10px 15px; /* Adjusted padding for a smaller button */
   background: #7ab4ff;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 50%; /* Makes the button circular */
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.5rem; /* Larger font size for the arrow */
   transition: all 0.3s ease;
   z-index: 1001; /* Ensure it's above the grid */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 50px; /* Fixed width for a perfect circle */
+  height: 50px; /* Fixed height for a perfect circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .go-back-button:hover {
@@ -363,12 +368,6 @@ body {
     font-size: 0.8rem;
   }
 
-  .go-back-button {
-    top: 10px;
-    left: 10px;
-    font-size: 0.9rem;
-    padding: 8px 16px;
-  }
 }
 
 
