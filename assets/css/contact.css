@@ -264,9 +264,9 @@ body {
 /* Solutions Grid */
 .solutions-grid {
   display: none; /* Hidden by default */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Dynamic columns */
-  gap: 10px; /* Smaller horizontal gap */
-  padding: 80px 20px 20px; /* More padding at the top for the button */
+  flex-direction: column; /* Stack solutions vertically */
+  gap: 10px; /* Space between items */
+  padding: 80px 20px 20px; /* Padding for the grid */
   background: rgba(8, 42, 90, 0.98);
   backdrop-filter: blur(15px);
   position: fixed;
@@ -279,8 +279,39 @@ body {
 }
 
 .solutions-grid.active {
-  display: grid;
+  display: flex; /* Show the grid when active */
 }
+
+/* Solution Item */
+.solution-item {
+  padding: 15px 20px; /* Padding for each solution */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.solution-item a {
+  color: #fff; /* White text */
+  font-size: 1.5rem; /* Larger font size */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Bold text */
+  transition: color 0.3s ease;
+}
+
+.solution-item:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
+  transform: translateX(10px); /* Slight shift on hover */
+}
+
+.solution-item a:hover {
+  color: #7ab4ff; /* Change text color on hover */
+}
+
+/* Divider Line */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2); /* Light divider line */
+}
+
 /* Go Back Button */
 .go-back-button {
   position: fixed; /* Fixed position to keep it visible */
@@ -309,100 +340,12 @@ body {
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Solution Cards */
-.solution-card {
-  position: relative;
-  width: 200px; /* Fixed width */
-  height: 250px; /* Fixed height */
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: 0 auto; /* Center cards */
-}
-
-
-.solution-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-}
-
-.solution-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure the image covers the card */
-}
-
-.solution-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)); /* Stronger gradient overlay */
-  color: #fff;
-  text-align: center;
-}
-
-.solution-content h3 {
-  font-size: 1.2rem; /* Title size */
-  margin-bottom: 10px;
-  font-weight: bold; /* Make title bolder */
-}
-
-.solution-content a {
-  display: inline-block;
-  padding: 8px 16px;
-  background: #7ab4ff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 0.9rem; /* Button size */
-  transition: background-color 0.3s ease;
-}
-
-.solution-content a:hover {
-  background-color: #082a5a;
-}
-
 /* Responsive Adjustments */
-@media (max-width: 1200px) {
-  .solutions-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Smaller cards for medium screens */
-  }
-
-  .solution-card {
-    width: 180px; /* Smaller width */
-    height: 225px; /* Smaller height */
-  }
-}
-
 @media (max-width: 768px) {
-  .solutions-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 2 columns for mobile */
-    padding: 60px 10px 10px; /* Adjust padding for mobile */
+  .solution-item a {
+    font-size: 1.2rem; /* Smaller font size for mobile */
   }
-
-  .solution-card {
-    width: 150px; /* Even smaller width */
-    height: 187.5px; /* Even smaller height */
-  }
-
-  .solution-content {
-    padding: 10px; /* Smaller padding for mobile */
-  }
-
-  .solution-content h3 {
-    font-size: 1rem; /* Smaller title size */
-  }
-
-  .solution-content a {
-    padding: 6px 12px; /* Smaller button size */
-    font-size: 0.8rem;
-  }
-
 }
-
 
 
 
