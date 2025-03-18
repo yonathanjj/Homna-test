@@ -7,6 +7,15 @@ const serviceLink = document.querySelector('.service-link');
 const solutionsGrid = document.querySelector('.solutions-grid');
 const goBackButton = document.querySelector('.go-back-button');
 
+// Select the Return Path button
+const returnPathButton = document.querySelector('.return-path-button');
+
+// Add click event to go back to the previous page
+returnPathButton.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default link behavior
+    history.back(); // Go back to the previous page
+});
+
 // GSAP Timeline for overlay menu
 const tl = gsap.timeline({ paused: true });
 
@@ -137,11 +146,12 @@ gsap.to(".hero-description", {
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Animate the left-side text (fade in and move up)
+// Animate the left-side text (fade in, move up, and scale slightly)
 gsap.from(".sticky-heading", {
     opacity: 0,
     y: 50,
-    duration: 1,
+    scale: 0.95,
+    duration: 1.2,
     ease: "power3.out",
     scrollTrigger: {
         trigger: ".sticky-heading",
@@ -150,13 +160,15 @@ gsap.from(".sticky-heading", {
     }
 });
 
-// Animate each content block on the right side as it enters the viewport
-gsap.utils.toArray(".content-block").forEach(block => {
+// Animate each content block with a staggered effect
+gsap.utils.toArray(".content-block").forEach((block, index) => {
     gsap.from(block, {
         opacity: 0,
         y: 50,
-        duration: 1,
+        rotateX: 10,  // Subtle rotation for depth effect
+        duration: 1.2,
         ease: "power3.out",
+        delay: index * 0.2, // Stagger effect
         scrollTrigger: {
             trigger: block,
             start: "top 85%",

@@ -93,9 +93,10 @@ body {
 }
 
 .nav-links li {
-  margin: 1.5rem 0;
-  position: relative; /* Needed for underline positioning */
+  list-style-type: none; /* Ensures no bullets appear */
+    margin:0.9rem 0; /* Increased vertical spacing */
 }
+
 
 /* Main Nav Links Styling */
 .nav-links a {
@@ -226,6 +227,38 @@ body {
     width: 30px;
     height: 2.5px;
   }
+}
+
+/* Return Path Button */
+.return-path {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.return-path-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #7ab4ff;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.return-path-button:hover {
+    background: #082a5a;
+    transform: translateY(-2px);
+}
+
+.return-path-button::before {
+    content: '↵';
+    margin-right: 8px;
+    font-size: 1.2rem;
+    vertical-align: middle;
 }
 
 /* Solutions Grid */
@@ -428,7 +461,7 @@ h2 {
 
 .divider {
     height: 1px;
-    background: #ddd;
+    background: #2e2d88;
     margin: 30px 0;
 }
 
@@ -571,16 +604,18 @@ h2 {
     align-items: center;
     gap: 8px;
     padding: 12px 25px;
-    background: #f5f5f5;
+    background: #2e2d88;
     border-radius: 25px;
     transition: all 0.3s;
     cursor: pointer;
     user-select: none;
+    color: white;
 }
 
 .form-categories label:hover {
     background: #eee;
     transform: translateY(-2px);
+    color: black;
 }
 
 .form-grid {
@@ -625,21 +660,24 @@ button[type="submit"] {
     display: block;
     margin: 30px auto 0;
     width: 200px;
-    background: #333;
-    color: white;
+    background: transparent;
+    color: #2e2d88;
     padding: 16px;
-    border: none;
-    border-radius: 8px;
+    border: 2px solid #2e2d88;
+    border-radius: 35px;
     cursor: pointer;
     font-weight: 600;
+    font-size: 18px; /* Increased font size */
     transition: all 0.3s;
 }
 
 button[type="submit"]:hover {
-    background: #555;
+    background: #2e2d88;
+    color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+
 
 /* FAQ Section */
 .faq-section {
@@ -648,7 +686,7 @@ button[type="submit"]:hover {
 }
 
 .faq-item {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #2e2d88;
     padding: 20px 0;
 }
 
@@ -721,7 +759,7 @@ body {
     color: white;
     padding: 40px 0 20px;
     position: relative;
-    margin-bottom: -20px; /* Fixes white space issue */
+    margin-bottom: -40px; /* Fixes white space issue */
     box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
 }
 
@@ -760,49 +798,12 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* Maps Section */
-.footer-maps {
-    width: 90%;
-    margin: 40px auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    perspective: 1000px;
-}
-
-.map-card {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform-style: preserve-3d;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-}
-
-.map-card:hover {
-    transform: translateY(-10px) rotateX(5deg) rotateY(2deg);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-}
-
-.map-title {
-    padding: 18px 25px;
-    font-size: 1.2rem;
-    margin: 0;
-    background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, transparent 100%);
-    position: relative;
-}
-
-.footer-map {
-    width: 100%;
-    height: 180px;
-    border: 0;
-    filter: grayscale(80%) contrast(110%);
-}
-
 /* Bottom Section */
 .footer-bottom {
     width: 90%;
     margin: 20px auto;
+    color: #ffffff;
+    text-align: center; /* Center align text */
 }
 
 .footer-bottom-links {
@@ -810,6 +811,17 @@ body {
     gap: 30px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 20px; /* Space between links and locations */
+}
+
+.footer-bottom-links a {
+    color: white !important; /* Force white text */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+    color: #7ab4ff !important; /* Optional: Change color on hover */
 }
 
 /* Social Section */
@@ -850,6 +862,38 @@ body {
     text-align: right;
     font-size: 1.8rem;
     font-weight: 700;
+}
+
+/* Location Section */
+.footer-locations {
+    width: 100%;
+    padding: 40px 0;
+    background: rgba(255, 255, 255, 0.05); /* Slight background for contrast */
+    margin-top: 20px; /* Space above the location section */
+}
+
+.location-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.location-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.location-link:hover {
+    color: #7ab4ff; /* Change color on hover */
+    transform: translateY(-3px); /* Slight lift on hover */
 }
 
 /* Animations */
@@ -904,38 +948,35 @@ body {
     .footer-links { justify-content: center; }
 }
 
-@media (max-width: 992px) {
-    .footer-maps { grid-template-columns: repeat(2, 1fr); }
-}
-
 @media (max-width: 768px) {
     .footer { padding: 30px 0 20px; }
-
-    .footer-maps {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .map-card:hover { transform: translateY(-5px); }
 
     .footer-text { font-size: 1.1rem; }
 
     .footer-bottom-links {
         flex-direction: column;
+                align-items: center; /* Centers the links */
         text-align: center;
         gap: 15px;
     }
 
+.footer-links-col {
+        align-items: center; /* Centers each column of links */
+    }
     .footer-social {
         flex-direction: column;
         gap: 25px;
         text-align: center;
     }
+
+    .location-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
 }
 
 @media (max-width: 480px) {
-    .map-title { font-size: 1rem; padding: 15px 20px; }
-    .footer-map { height: 150px; }
     .footer-links { flex-direction: column; gap: 25px; }
     .footer-logo { text-align: center; }
 }

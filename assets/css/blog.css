@@ -94,9 +94,10 @@ body {
 }
 
 .nav-links li {
-  margin: 1.5rem 0;
-  position: relative; /* Needed for underline positioning */
+  list-style-type: none; /* Ensures no bullets appear */
+    margin:0.9rem 0; /* Increased vertical spacing */
 }
+
 
 /* Main Nav Links Styling */
 .nav-links a {
@@ -227,6 +228,38 @@ body {
     width: 30px;
     height: 2.5px;
   }
+}
+
+/* Return Path Button */
+.return-path {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.return-path-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #7ab4ff;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.return-path-button:hover {
+    background: #082a5a;
+    transform: translateY(-2px);
+}
+
+.return-path-button::before {
+    content: '↵';
+    margin-right: 8px;
+    font-size: 1.2rem;
+    vertical-align: middle;
 }
 
 /* Solutions Grid */

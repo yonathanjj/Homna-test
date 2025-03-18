@@ -7,6 +7,15 @@ const serviceLink = document.querySelector('.service-link');
 const solutionsGrid = document.querySelector('.solutions-grid');
 const goBackButton = document.querySelector('.go-back-button');
 
+// Select the Return Path button
+const returnPathButton = document.querySelector('.return-path-button');
+
+// Add click event to go back to the previous page
+returnPathButton.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default link behavior
+    history.back(); // Go back to the previous page
+});
+
 // GSAP Timeline for overlay menu
 const tl = gsap.timeline({ paused: true });
 

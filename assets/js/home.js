@@ -7,6 +7,15 @@ const serviceLink = document.querySelector('.service-link');
 const solutionsGrid = document.querySelector('.solutions-grid');
 const goBackButton = document.querySelector('.go-back-button');
 
+// Select the Return Path button
+const returnPathButton = document.querySelector('.return-path-button');
+
+// Add click event to go back to the previous page
+returnPathButton.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default link behavior
+    history.back(); // Go back to the previous page
+});
+
 // GSAP Timeline for overlay menu
 const tl = gsap.timeline({ paused: true });
 
@@ -117,6 +126,34 @@ window.onload = function() {
   }, 1000); // Fade-in text after the image expansion is complete
 }
 
+
+// Select all expertise cards
+const expertiseCards = document.querySelectorAll('.expertise-card');
+
+// Function to animate cards
+function animateCards() {
+  expertiseCards.forEach((card, index) => {
+    setTimeout(() => {
+      card.classList.add('animate');
+    }, index * 200); // Stagger delay (200ms per card)
+  });
+}
+
+// Trigger animations when the section is in view
+const expertiseSection = document.querySelector('.expertise-section');
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateCards();
+        observer.unobserve(entry.target); // Stop observing after animation
+      }
+    });
+  },
+  { threshold: 0.5 } // Trigger when 50% of the section is visible
+);
+
+observer.observe(expertiseSection);
 
 // Remove all Intersection Observer code
 
