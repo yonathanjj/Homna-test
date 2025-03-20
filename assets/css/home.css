@@ -238,12 +238,12 @@ body {
 
 .return-path-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 15px 35px;
     background: #7ab4ff;
     color: #fff;
     border: none;
-    border-radius: 25px;
-    font-size: 1rem;
+    border-radius: 35px;
+    font-size: 1.6rem;
     font-weight: 600;
     text-decoration: none;
     transition: background 0.3s ease, transform 0.3s ease;
@@ -256,7 +256,6 @@ body {
 }
 
 .return-path-button::before {
-    content: '↵';
     margin-right: 8px;
     font-size: 1.2rem;
     vertical-align: middle;
@@ -287,6 +286,9 @@ body {
 .solution-item {
   padding: 15px 20px; /* Padding for each solution */
   transition: background-color 0.3s ease, transform 0.3s ease;
+  align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    text-align: center;
 }
 
 .solution-item a {
@@ -310,7 +312,7 @@ body {
 .divider {
   width: 100%;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.2); /* Light divider line */
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
 }
 
 /* Go Back Button */
@@ -647,8 +649,8 @@ body {
 /* Dynamic Grid Layout */
 .expertise-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
+  gap: 30px; /* Equal gaps */
   margin-bottom: 40px;
 }
 
@@ -669,9 +671,19 @@ body {
   transform: translateY(0);
 }
 
+/* Hide additional cards initially */
+.expertise-card.additional-card {
+  display: none;
+}
+
+/* Show additional cards when toggled */
+.expertise-card.additional-card.show {
+  display: block;
+}
+
 .card-image {
   position: relative;
-  height: 250px;
+  height: 300px; /* Increased height */
   overflow: hidden;
 }
 
@@ -739,6 +751,108 @@ body {
   transform: translateY(-2px);
 }
 
+/* More Button */
+.more-button {
+  padding: 12px 24px;
+  background: #7ab4ff;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.more-button:hover {
+  background: #082a5a;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  /* For tablets and smaller desktops */
+  .expertise-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  }
+
+  .expertise-section h2 {
+    font-size: 2.4rem;
+  }
+
+  .card-content h3 {
+    font-size: 1.4rem;
+  }
+
+  .card-content p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* For smaller tablets and large phones */
+  .expertise-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 20px; /* Smaller gap */
+  }
+
+  .expertise-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .card-image {
+    height: 250px; /* Slightly smaller height */
+  }
+
+  .card-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .card-content p {
+    font-size: 0.85rem;
+  }
+
+  .more-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* For mobile phones */
+  .expertise-grid {
+    grid-template-columns: repeat(1, 1fr); /* 1 column */
+    gap: 15px; /* Smaller gap */
+  }
+
+  .expertise-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .card-image {
+    height: 200px; /* Smaller height for mobile */
+  }
+
+  .card-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .card-content p {
+    font-size: 0.8rem;
+  }
+
+  .card-content a {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .more-button {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}
 
 
 
@@ -776,6 +890,7 @@ body {
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease;
+  border-radius:15px;
 }
 
 .project-card .image {

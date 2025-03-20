@@ -127,8 +127,13 @@ window.onload = function() {
 }
 
 
+
+
+
 // Select all expertise cards
 const expertiseCards = document.querySelectorAll('.expertise-card');
+const additionalCards = document.querySelectorAll('.additional-card');
+const moreButton = document.getElementById('more-button');
 
 // Function to animate cards
 function animateCards() {
@@ -138,6 +143,23 @@ function animateCards() {
     }, index * 200); // Stagger delay (200ms per card)
   });
 }
+
+// Function to toggle additional cards
+function toggleAdditionalCards() {
+  additionalCards.forEach(card => {
+    card.classList.toggle('show');
+  });
+
+  // Update button text
+  if (moreButton.textContent === 'Show More') {
+    moreButton.textContent = 'Show Less';
+  } else {
+    moreButton.textContent = 'Show More';
+  }
+}
+
+// Add event listener to the "More" button
+moreButton.addEventListener('click', toggleAdditionalCards);
 
 // Trigger animations when the section is in view
 const expertiseSection = document.querySelector('.expertise-section');
@@ -154,6 +176,9 @@ const observer = new IntersectionObserver(
 );
 
 observer.observe(expertiseSection);
+
+
+
 
 // Remove all Intersection Observer code
 
