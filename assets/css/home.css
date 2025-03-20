@@ -370,21 +370,19 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 1.8); /* Darker overlay */
-  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity for a darker overlay */
+  z-index: 1;
 }
 
-/* Initial State of the Hero Image */
-.hero-image {
-  width: 500px;
-  height: 650px;
-  object-fit: cover;
+/* Hero Video Styling */
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the entire hero section */
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 2s ease;
-  z-index: 1;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 
 /* White Gradient Overlay */
@@ -407,7 +405,7 @@ body {
   left: 5%;
   transform: translateY(-50%);
   text-align: left;
-  color:#2e2d88;
+  color: #2e2d88;
   opacity: 0;
   transition: opacity 1s ease 2s;
   z-index: 2;
@@ -422,18 +420,6 @@ body {
   animation: slideIn 1s ease-out;
 }
 
-/* Animation for the Hero Image */
-@keyframes expandImage {
-  0% {
-    width: 500px;
-    height: 650px;
-  }
-  100% {
-    width: 100%;
-    height: 100vh;
-  }
-}
-
 /* Hero Text Fade In */
 @keyframes slideIn {
   0% {
@@ -446,11 +432,6 @@ body {
   }
 }
 
-/* Apply the expand animation on image load */
-.hero-image.loaded {
-  animation: expandImage 2s ease forwards;
-}
-
 .hero-text.visible {
   opacity: 1;
 }
@@ -459,11 +440,6 @@ body {
 @media (max-width: 768px) {
   .hero {
     height: 80vh; /* Adjust hero height for smaller screens */
-  }
-
-  .hero-image {
-    width: 100%;
-    height: 80vh;
   }
 
   .hero-text {
