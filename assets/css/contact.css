@@ -368,7 +368,7 @@ section {
     width: 90%;
     margin: 0 auto 80px;
     padding: 40px 0;
-    margin-top:4rem;
+    margin-top: 4rem;
 }
 
 h2 {
@@ -394,20 +394,24 @@ h2 {
 .left-content {
     flex: 1;
     line-height: 1.2;
-    font-size:1rem;
+    font-size: 1rem;
 }
+
+/* Blue Glowing Divider Line */
+.divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(0, 123, 255, 0.8) 50%, transparent 100%);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
+    margin: 30px 0;
+}
+
+
+
 
 .right-content {
     flex: 2;
     display: flex;
-    flex-direction: column; /* This will make the map-container items stack vertically */
-}
-
-
-.divider {
-    height: 1px;
-    background: #2e2d88;
-    margin: 30px 0;
+    flex-direction: column;
 }
 
 /* Social Media Links */
@@ -455,13 +459,13 @@ h2 {
 
 .map-container {
     display: flex;
-    flex-wrap: wrap; /* Allows wrapping of items */
-    gap: 20px; /* Space between the map items */
-    justify-content: space-between; /* Ensure items are spread out evenly */
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
 }
 
 .map-item {
-    width: 32%; /* Make each map item take up about a third of the container */
+    width: 32%;
     margin-bottom: 20px;
 }
 
@@ -481,7 +485,7 @@ h2 {
 .google-map {
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Updated Contact Form Width */
@@ -491,12 +495,12 @@ h2 {
     background: #fff;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
     .map-container {
-        flex-direction: column; /* Stack map items vertically on smaller screens */
+        flex-direction: column;
     }
 
     .google-map iframe {
@@ -508,7 +512,7 @@ h2 {
     }
 
     .map-item {
-        width: 100%; /* Take up full width on smaller screens */
+        width: 100%;
     }
 
     .contact-form {
@@ -525,6 +529,7 @@ h2 {
         height: 180px;
     }
 }
+
 
 /* Contact Form */
 .contact-form {
@@ -631,8 +636,20 @@ button[type="submit"]:hover {
 }
 
 .faq-item {
-    border-bottom: 1px solid #2e2d88;
+    position: relative; /* Required for the pseudo-element */
     padding: 20px 0;
+}
+
+/* Blue Glowing Divider Line */
+.faq-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(0, 123, 255, 0.8) 50%, transparent 100%);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
 }
 
 .faq-item summary {
@@ -682,7 +699,6 @@ button[type="submit"]:hover {
         font-size: 2rem;
     }
 }
-
 
 
 

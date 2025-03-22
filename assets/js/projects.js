@@ -107,80 +107,57 @@ goBackButton.addEventListener('click', () => {
   tl.play(); // Play the main menu animation
 });
 
-// Sample project data (8 projects)
+// Sample project data (7 projects)
 const projects = [
   {
-    title: "Disner Basha Ram",
-    description: "We’ve just been trying to help me see someone you want and we don’t understand it. It’s better than our own.",
+    title: "Singapore Bright",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
     image: "assets/image/1.jpg",
-    gallery: ["assets/image/1.jpg", "assets/image/2.jpg", "assets/image/3.jpg"],
-    requirements: "This project required extensive planning and coordination with multiple stakeholders. The goal was to create a sustainable and innovative design that meets the needs of the community.",
-    products: ["Product A", "Product B", "Product C"],
-    tags: ["BASH", "Cafe Bashan, Johannes"]
+    gallery: ["assets/image/1.jpg", "assets/image/2.jpg", "assets/image/3.jpg", "assets/image/4.jpg"],
+    solutions: ["water proofing", "air resistance 4/7", "selling seal 4kg"],
   },
   {
-    title: "Cerfener Platte Lifestojetordism",
-    description: "Looking at us for our natural passion that you’re looking for is a good thing!",
+    title: "Project 2",
+    description: "Description for Project 2.",
     image: "assets/image/2.jpg",
-    gallery: ["assets/image/2.jpg", "assets/image/3.jpg", "assets/image/1.jpg"],
-    requirements: "The project involved advanced architectural techniques and eco-friendly materials to create a modern living space.",
-    products: ["Product D", "Product E", "Product F"],
-    tags: ["CERFENT ARRECTURE", "Karma, Rana"]
+    gallery: ["assets/image/2.jpg", "assets/image/3.jpg", "assets/image/4.jpg", "assets/image/1.jpg"],
+    solutions: ["solution A", "solution B", "solution C"],
   },
   {
-    title: "Tunnel Swimcujazzas",
-    description: "The goal is to learn, so I can read the instructions and discuss all kinds of matters in this room according to a beautiful...",
+    title: "Project 3",
+    description: "Description for Project 3.",
     image: "assets/image/3.jpg",
-    gallery: ["assets/image/3.jpg", "assets/image/1.jpg", "assets/image/2.jpg"],
-    requirements: "This project focused on creating a seamless underground tunnel system with state-of-the-art technology.",
-    products: ["Product G", "Product H", "Product I"],
-    tags: ["TRANSFORMATION INTRACTING TIME", "Minnipeg, David"]
+    gallery: ["assets/image/3.jpg", "assets/image/4.jpg", "assets/image/1.jpg", "assets/image/2.jpg"],
+    solutions: ["solution D", "solution E", "solution F"],
   },
   {
-    title: "Karma Mine",
-    description: "This way you are pleased to accept my condition.",
+    title: "Project 4",
+    description: "Description for Project 4.",
     image: "assets/image/4.jpg",
-    gallery: ["assets/image/4.jpg", "assets/image/1.jpg", "assets/image/2.jpg"],
-    requirements: "The project aimed to develop a sustainable mining solution with minimal environmental impact.",
-    products: ["Product J", "Product K", "Product L"],
-    tags: ["CONCEPT: MINING", "Karma, Samba"]
+    gallery: ["assets/image/4.jpg", "assets/image/1.jpg", "assets/image/2.jpg", "assets/image/3.jpg"],
+    solutions: ["solution G", "solution H", "solution I"],
   },
   {
-    title: "Mohammed VI Tower",
-    description: "Café is close to a central building in harmony with the community of Mennipeg VI Tower. It will be built from a museum.",
+    title: "Project 5",
+    description: "Description for Project 5.",
     image: "assets/image/5.jpg",
-    gallery: ["assets/image/5.jpg", "assets/image/1.jpg", "assets/image/2.jpg"],
-    requirements: "The project involved constructing a high-rise tower with a mix of residential and commercial spaces.",
-    products: ["Product M", "Product N", "Product O"],
-    tags: ["3 July, Morocco"]
+    gallery: ["assets/image/5.jpg", "assets/image/1.jpg", "assets/image/2.jpg", "assets/image/3.jpg"],
+    solutions: ["solution J", "solution K", "solution L"],
   },
   {
-    title: "Moments Club",
-    description: "High energy weather for free summer products.",
+    title: "Project 6",
+    description: "Description for Project 6.",
     image: "assets/image/6.jpg",
-    gallery: ["assets/image/6.jpg", "assets/image/1.jpg", "assets/image/2.jpg"],
-    requirements: "The project focused on creating a vibrant social club with modern amenities and a luxurious atmosphere.",
-    products: ["Product P", "Product Q", "Product R"],
-    tags: ["CEMENT ARRECTURE", "Samba, Clib"]
+    gallery: ["assets/image/6.jpg", "assets/image/1.jpg", "assets/image/2.jpg", "assets/image/3.jpg"],
+    solutions: ["solution M", "solution N", "solution O"],
   },
   {
-    title: "Aura Home Apartments",
-    description: "If you have used your assistance for your activities or accommodations?",
+    title: "Project 7",
+    description: "Description for Project 7.",
     image: "assets/image/7.jpg",
-    gallery: ["assets/image/7.jpg", "assets/image/1.jpg", "assets/image/2.jpg"],
-    requirements: "The project aimed to design affordable yet stylish apartments for urban living.",
-    products: ["Product S", "Product T", "Product U"],
-    tags: ["IMAGE: BRANTHENE*", "Marek, Sale"]
+    gallery: ["assets/image/7.jpg", "assets/image/1.jpg", "assets/image/2.jpg", "assets/image/3.jpg"],
+    solutions: ["solution P", "solution Q", "solution R"],
   },
-  {
-    title: "Bendsburg Canal Tunnel",
-    description: "The mountains are warm, warm and peaceful throughout the country. The mountain has a wide variety of vegetation and terrain.",
-    image: "assets/image/8.jpg",
-    gallery: ["assets/image/8.jpg", "assets/image/1.jpg", "assets/image/2.jpg"],
-    requirements: "The project involved building a tunnel under a canal to improve transportation infrastructure.",
-    products: ["Product V", "Product W", "Product X"],
-    tags: ["4 Parking, Germany"]
-  }
 ];
 
 // Function to create project cards
@@ -198,18 +175,9 @@ function createProjectCard(project) {
   const description = document.createElement("p");
   description.textContent = project.description;
 
-  const tags = document.createElement("div");
-  tags.classList.add("tags");
-  project.tags.forEach(tag => {
-    const tagElement = document.createElement("span");
-    tagElement.textContent = tag;
-    tags.appendChild(tagElement);
-  });
-
   card.appendChild(image);
   card.appendChild(title);
   card.appendChild(description);
-  card.appendChild(tags);
 
   // Add click event to open popup
   card.addEventListener("click", () => openPopup(project));
@@ -219,12 +187,8 @@ function createProjectCard(project) {
 
 // Function to render projects
 function renderProjects() {
-  console.log("Rendering projects..."); // Debugging line
   const projectsGrid = document.getElementById("projects-grid");
-  if (!projectsGrid) {
-    console.error("projects-grid element not found!"); // Debugging line
-    return;
-  }
+  if (!projectsGrid) return;
   projects.forEach(project => {
     const card = createProjectCard(project);
     projectsGrid.appendChild(card);
@@ -233,72 +197,95 @@ function renderProjects() {
 
 // Function to open popup
 function openPopup(project) {
-  console.log("Opening popup for project:", project.title); // Debugging line
-
-  // Select popup elements
   const popup = document.getElementById("project-popup");
   const popupImage = popup.querySelector(".popup-image");
+  const projectTitle = popup.querySelector(".project-title");
   const popupDescription = popup.querySelector(".popup-description");
-  const galleryMainImage = popup.querySelector(".gallery-main-image");
-  const galleryDots = popup.querySelector(".gallery-dots");
-  const requirementsText = popup.querySelector(".requirements-text");
-  const popupProducts = popup.querySelector(".popup-products ul");
+  const solutionsList = popup.querySelector(".solutions-list");
+  const galleryImages = popup.querySelector(".gallery-images");
 
-  if (!popup || !popupImage || !popupDescription || !galleryMainImage || !galleryDots || !requirementsText || !popupProducts) {
-    console.error("One or more popup elements not found!"); // Debugging line
-    return;
-  }
+  if (!popup || !popupImage || !projectTitle || !popupDescription || !solutionsList || !galleryImages) return;
 
-  // Set full-width image and description
+  // Set full-width image
   popupImage.src = project.image;
   popupImage.alt = project.title;
+
+  // Set title and description
+  projectTitle.textContent = project.title;
   popupDescription.textContent = project.description;
 
-  // Set gallery images and dots
-  galleryDots.innerHTML = ""; // Clear previous dots
-  project.gallery.forEach((img, index) => {
-    const dot = document.createElement("div");
-    dot.classList.add("dot");
-    if (index === 0) dot.classList.add("active");
-    dot.addEventListener("click", () => {
-      galleryMainImage.src = img; // Update main image
-      galleryDots.querySelectorAll(".dot").forEach(d => d.classList.remove("active")); // Remove active class from all dots
-      dot.classList.add("active"); // Add active class to clicked dot
-    });
-    galleryDots.appendChild(dot);
+  // Set solutions used
+  solutionsList.innerHTML = ""; // Clear previous solutions
+  project.solutions.forEach(solution => {
+    const solutionItem = document.createElement("li");
+    solutionItem.textContent = solution;
+    solutionsList.appendChild(solutionItem);
   });
-  galleryMainImage.src = project.gallery[0]; // Set the first image as default
 
-  // Set project requirements
-  requirementsText.textContent = project.requirements;
-
-  // Set products used
-  popupProducts.innerHTML = ""; // Clear previous products
-  project.products.forEach(product => {
-    const productItem = document.createElement("li");
-    productItem.textContent = product;
-    popupProducts.appendChild(productItem);
+  // Set gallery images
+  galleryImages.innerHTML = ""; // Clear previous images
+  project.gallery.forEach(image => {
+    const img = document.createElement("img");
+    img.src = image;
+    img.alt = "Gallery Image";
+    img.addEventListener("click", () => openLightbox(image));
+    galleryImages.appendChild(img);
   });
 
   // Show popup
   popup.style.display = "block";
-  console.log("Popup displayed successfully!"); // Debugging line
+
+  // Disable background scrolling
+  document.body.style.overflow = "hidden";
 }
 
 // Function to close popup
 function closePopup() {
   const popup = document.getElementById("project-popup");
   popup.style.display = "none";
+
+  // Re-enable background scrolling
+  document.body.style.overflow = "auto";
+}
+
+// Function to open lightbox
+function openLightbox(imageSrc) {
+  const lightbox = document.createElement("div");
+  lightbox.classList.add("lightbox");
+
+  const lightboxImage = document.createElement("img");
+  lightboxImage.src = imageSrc;
+  lightboxImage.alt = "Enlarged Image";
+
+  const closeLightboxBtn = document.createElement("span");
+  closeLightboxBtn.classList.add("close-lightbox");
+  closeLightboxBtn.innerHTML = "&times;";
+  closeLightboxBtn.addEventListener("click", () => closeLightbox(lightbox));
+
+  lightbox.appendChild(lightboxImage);
+  lightbox.appendChild(closeLightboxBtn);
+  document.body.appendChild(lightbox);
+
+  // Show lightbox
+  lightbox.style.display = "flex";
+
+  // Disable background scrolling
+  document.body.style.overflow = "hidden";
+}
+
+// Function to close lightbox
+function closeLightbox(lightbox) {
+  lightbox.remove();
+
+  // Re-enable background scrolling
+  document.body.style.overflow = "auto";
 }
 
 // Initialize everything
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM fully loaded and parsed"); // Debugging line
   renderProjects(); // Render projects
   const closeBtn = document.querySelector(".close-popup");
   if (closeBtn) {
     closeBtn.addEventListener("click", closePopup);
-  } else {
-    console.error("close-popup button not found!"); // Debugging line
   }
 });

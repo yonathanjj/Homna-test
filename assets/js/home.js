@@ -130,112 +130,139 @@ window.onload = function() {
 
 
 
-// Select all expertise cards
-const expertiseCards = document.querySelectorAll('.expertise-card');
-const additionalCards = document.querySelectorAll('.additional-card');
-const moreButton = document.getElementById('more-button');
+document.addEventListener('DOMContentLoaded', function () {
+  // Select all expertise cards and additional cards
+  const expertiseCards = document.querySelectorAll('.expertise-card');
+  const additionalCards = document.querySelectorAll('.additional-card');
+  const moreButton = document.getElementById('more-button');
 
-// Function to animate cards
-function animateCards() {
-  expertiseCards.forEach((card, index) => {
-    setTimeout(() => {
-      card.classList.add('animate');
-    }, index * 200); // Stagger delay (200ms per card)
-  });
-}
-
-// Function to toggle additional cards
-function toggleAdditionalCards() {
-  additionalCards.forEach(card => {
-    card.classList.toggle('show');
-  });
-
-  // Update button text
-  if (moreButton.textContent === 'Show More') {
-    moreButton.textContent = 'Show Less';
-  } else {
-    moreButton.textContent = 'Show More';
-  }
-}
-
-// Add event listener to the "More" button
-moreButton.addEventListener('click', toggleAdditionalCards);
-
-// Trigger animations when the section is in view
-const expertiseSection = document.querySelector('.expertise-section');
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        animateCards();
-        observer.unobserve(entry.target); // Stop observing after animation
-      }
+  // Function to animate cards
+  function animateCards() {
+    expertiseCards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add('animate');
+      }, index * 200); // Stagger delay (200ms per card)
     });
-  },
-  { threshold: 0.5 } // Trigger when 50% of the section is visible
-);
+  }
 
-observer.observe(expertiseSection);
+  // Function to toggle additional cards
+  function toggleAdditionalCards() {
+    additionalCards.forEach(card => {
+      card.classList.toggle('show');
+    });
 
+    // Update button text
+    if (moreButton.textContent === 'Show More') {
+      moreButton.textContent = 'Show Less';
+    } else {
+      moreButton.textContent = 'Show More';
+    }
+  }
 
+  // Add event listener to the "More" button
+  moreButton.addEventListener('click', toggleAdditionalCards);
 
+  // Trigger animations when the section is in view
+  const expertiseSection = document.querySelector('.expertise-section');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCards();
+          observer.unobserve(entry.target); // Stop observing after animation
+        }
+      });
+    },
+    { threshold: 0.5 } // Trigger when 50% of the section is visible
+  );
 
-// Remove all Intersection Observer code
+  observer.observe(expertiseSection);
 
-const allProjectsButton = document.querySelector('.all-projects-btn');
-
-// Remove hidden class on button onload
-document.addEventListener('DOMContentLoaded', () => {
-  allProjectsButton.classList.remove('hidden');
+  // Show the first 6 cards by default
+  expertiseCards.forEach((card, index) => {
+    if (index < 6) {
+      card.style.display = 'block'; // Show the first 6 cards
+    } else {
+      card.style.display = 'none'; // Hide the rest
+    }
+  });
 });
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
-    const projects = document.querySelectorAll(".project-card");
-    const popup = document.getElementById("projects-popup");
-    const popupTitle = document.querySelector(".popup-title");
-    const popupGallery = document.querySelector(".popup-gallery");
+  const projects = document.querySelectorAll(".project-card");
+  const popup = document.getElementById("projects-popup");
+  const popupTitle = document.querySelector(".popup-title");
+  const popupGallery = document.querySelector(".popup-gallery");
 
-    // Function to open popup
-    function openProjectsPopup(title, image) {
-        popupTitle.textContent = title;
+  // Function to open popup
+  function openProjectsPopup(title, galleryImages) {
+    popupTitle.textContent = title;
 
-        // Dynamically generate 6 images for the gallery
-        popupGallery.innerHTML = "";
-        for (let i = 1; i <= 6; i++) {
-            let imgDiv = document.createElement("div");
-            imgDiv.classList.add("popup-image");
-            imgDiv.style.backgroundImage = `url('${image}')`;
-            popupGallery.appendChild(imgDiv);
-        }
+    // Clear existing gallery images
+    popupGallery.innerHTML = "";
 
-        popup.style.display = "flex";
-    }
-
-    // Assign click event to each project card
-    projects.forEach((project) => {
-        project.addEventListener("click", function () {
-            const projectTitle = project.getAttribute("data-title");
-            const projectImage = project.getAttribute("data-image");
-            openProjectsPopup(projectTitle, projectImage);
-        });
+    // Dynamically generate images for the gallery
+    galleryImages.forEach((image) => {
+      const imgDiv = document.createElement("div");
+      imgDiv.classList.add("popup-image");
+      imgDiv.style.backgroundImage = `url('${image}')`;
+      imgDiv.addEventListener("click", () => openLightbox(image));
+      popupGallery.appendChild(imgDiv);
     });
 
-    // Close popup function
-    function closeProjectsPopup() {
-        popup.style.display = "none";
-    }
+    popup.style.display = "flex";
+  }
 
-    // Close popup when clicking outside
-    popup.addEventListener("click", function (event) {
-        if (event.target === popup) {
-            closeProjectsPopup();
-        }
+  // Function to open lightbox
+  function openLightbox(imageSrc) {
+    const lightbox = document.createElement("div");
+    lightbox.classList.add("lightbox");
+
+    const lightboxImage = document.createElement("img");
+    lightboxImage.src = imageSrc;
+    lightboxImage.classList.add("lightbox-image");
+
+    const closeLightboxBtn = document.createElement("span");
+    closeLightboxBtn.classList.add("close-lightbox-btn");
+    closeLightboxBtn.innerHTML = "&times;";
+    closeLightboxBtn.addEventListener("click", () => closeLightbox(lightbox));
+
+    lightbox.appendChild(lightboxImage);
+    lightbox.appendChild(closeLightboxBtn);
+    document.body.appendChild(lightbox);
+  }
+
+  // Function to close lightbox
+  function closeLightbox(lightbox) {
+    lightbox.remove();
+  }
+
+  // Assign click event to each project card
+  projects.forEach((project) => {
+    project.addEventListener("click", function () {
+      const projectTitle = project.getAttribute("data-title");
+      const galleryImages = JSON.parse(project.getAttribute("data-gallery"));
+      openProjectsPopup(projectTitle, galleryImages);
     });
+  });
 
-    // Attach close function globally
-    window.closeProjectsPopup = closeProjectsPopup;
+  // Close popup function
+  function closeProjectsPopup() {
+    popup.style.display = "none";
+  }
+
+  // Close popup when clicking outside
+  popup.addEventListener("click", function (event) {
+    if (event.target === popup) {
+      closeProjectsPopup();
+    }
+  });
+
+  // Attach close function globally
+  window.closeProjectsPopup = closeProjectsPopup;
 });
-
 
 
  gsap.from(".partner-logo", {

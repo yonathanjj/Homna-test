@@ -604,7 +604,6 @@ body {
 
 
 
-
 /* Our Expertise Section */
 .expertise-section {
   width: 90%;
@@ -645,6 +644,11 @@ body {
 .expertise-card.animate {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Show the first 6 cards by default */
+.expertise-card:nth-child(-n+6) {
+  display: block;
 }
 
 /* Hide additional cards initially */
@@ -866,7 +870,7 @@ body {
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease;
-  border-radius:15px;
+  border-radius: 15px;
 }
 
 .project-card .image {
@@ -931,6 +935,7 @@ body {
   }
 }
 
+/* Popup Styles */
 .projects-popup {
   display: none;
   position: fixed;
@@ -938,46 +943,105 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .popup-content {
-  background: black;
+  background: #1e1e1e;
   width: 90%;
-  max-width: 800px;
-  padding: 20px;
+  max-width: 1200px;
+  padding: 30px;
   color: white;
   position: relative;
-  border-radius: 8px;
+  border-radius: 12px;
   text-align: left;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
   cursor: pointer;
   color: white;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #ff4d4d;
+}
+
+.popup-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.popup-description {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #ccc;
 }
 
 .popup-gallery {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
   margin-top: 20px;
 }
 
 .popup-image {
   width: 100%;
-  padding-top: 100%;
+  height: 200px;
   background-size: cover;
   background-position: center;
-  border-radius: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
+.popup-image:hover {
+  transform: scale(1.05);
+}
+
+/* Lightbox Styles */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.lightbox-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.close-lightbox-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-lightbox-btn:hover {
+  color: #ff4d4d;
+}
 
 
 

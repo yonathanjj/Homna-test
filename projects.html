@@ -102,45 +102,43 @@
     <div class="projects-grid" id="projects-grid">
         <!-- Projects will be dynamically added here using JavaScript -->
     </div>
+    </div>
+    <p class="gallery-instruction">Click on the images to see them bigger.</p>
+    </div>
 </main>
 
 <!-- Popup Modal -->
 <div id="project-popup" class="popup-modal">
     <div class="popup-content">
         <!-- Sticky Close Button -->
-        <span class="close-popup">&times;</span>
+        <img class="close-popup" src="assets/image/circle.png" alt="Close">
 
-        <!-- Full-Width Image with Overlay Text -->
+        <!-- Full-Width Image -->
         <div class="popup-image-container">
             <img class="popup-image" src="" alt="Project Image">
-            <div class="popup-image-overlay">
+        </div>
+
+        <!-- Left-Aligned Header and Description -->
+        <div class="popup-text-container">
+            <div class="popup-text-left">
                 <h2 class="project-title"></h2>
+                <p class="popup-description"></p>
+            </div>
+
+            <!-- Right-Aligned Solutions Used -->
+            <div class="popup-solutions">
+                <h3>Solutions Used</h3>
+                <ul class="solutions-list">
+                    <!-- Solutions will be added dynamically by JavaScript -->
+                </ul>
             </div>
         </div>
 
-        <!-- Description -->
-        <div class="popup-description"></div>
-
-        <!-- Gallery -->
+        <!-- Gallery Section -->
         <div class="popup-gallery">
-            <img class="gallery-main-image" src="" alt="Gallery Image">
-            <div class="gallery-dots">
-                <!-- Dots will be added dynamically by JavaScript -->
+            <div class="gallery-images">
+                <!-- Gallery images will be added dynamically by JavaScript -->
             </div>
-        </div>
-
-        <!-- Project Requirements -->
-        <div class="popup-requirements">
-            <h3>Project Requirements</h3>
-            <p class="requirements-text"></p>
-        </div>
-
-        <!-- Products Used -->
-        <div class="popup-products">
-            <h3>Products Used</h3>
-            <ul>
-                <!-- Products will be added dynamically by JavaScript -->
-            </ul>
         </div>
     </div>
 </div>
