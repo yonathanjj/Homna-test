@@ -131,19 +131,8 @@ window.onload = function() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Select all expertise cards and additional cards
-  const expertiseCards = document.querySelectorAll('.expertise-card');
   const additionalCards = document.querySelectorAll('.additional-card');
   const moreButton = document.getElementById('more-button');
-
-  // Function to animate cards
-  function animateCards() {
-    expertiseCards.forEach((card, index) => {
-      setTimeout(() => {
-        card.classList.add('animate');
-      }, index * 200); // Stagger delay (200ms per card)
-    });
-  }
 
   // Function to toggle additional cards
   function toggleAdditionalCards() {
@@ -164,11 +153,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Trigger animations when the section is in view
   const expertiseSection = document.querySelector('.expertise-section');
+  const expertiseCards = document.querySelectorAll('.expertise-card');
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          animateCards();
+          expertiseCards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('animate');
+            }, index * 200); // Stagger delay (200ms per card)
+          });
           observer.unobserve(entry.target); // Stop observing after animation
         }
       });
@@ -177,16 +172,8 @@ document.addEventListener('DOMContentLoaded', function () {
   );
 
   observer.observe(expertiseSection);
-
-  // Show the first 6 cards by default
-  expertiseCards.forEach((card, index) => {
-    if (index < 6) {
-      card.style.display = 'block'; // Show the first 6 cards
-    } else {
-      card.style.display = 'none'; // Hide the rest
-    }
-  });
 });
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
