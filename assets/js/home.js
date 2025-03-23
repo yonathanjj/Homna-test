@@ -189,7 +189,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
 document.addEventListener("DOMContentLoaded", function () {
   const projects = document.querySelectorAll(".project-card");
   const popup = document.getElementById("projects-popup");
